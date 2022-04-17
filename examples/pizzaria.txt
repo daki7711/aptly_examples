@@ -1,0 +1,11 @@
+Create an app where users select from a list of pizza toppings such as cheese, pepperoni, and mushrooms. When the user clicks a button, add the selection to another list of chosen ingredients.
+
+START
+Screen1 = Screen(AppName = "Pizza Central")
+IngredientsList = ListView(Screen1, ElementsFromString = "cheese,pepperoni,mushrooms,peppers,sausage,meatballs")
+AddButton = Button(Screen1)
+ChosenList = ListView(Screen1)
+
+when AddButton.Click():
+    set ChosenList.Elements = lists_add_item(ChosenList.Elements, IngredientsList.Selection)
+STOP

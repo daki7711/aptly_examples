@@ -1,0 +1,14 @@
+Translate the text "Good afternoon" into French when a button is clicked.
+
+START
+Screen1 = Screen()
+Button1 = Button(Screen1, Text = "Translate")
+Label1 = Label(Screen1)
+YandexTranslate1 = YandexTranslate(Screen1)
+
+when Button1.Click():
+    call YandexTranslate1.RequestTranslation("fr", "Good afternoon")
+
+when YandexTranslate1.GotTranslation(responseCode, translation):
+    set Label1.Text = translation
+STOP

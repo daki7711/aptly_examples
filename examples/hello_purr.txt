@@ -1,0 +1,10 @@
+Create an app called HelloPurr with a picture of a kitty that, when clicked, plays a meow sound.
+
+START
+Screen1 = Screen(AppName = "HelloPurr")
+Cat = Button(Screen1, Image = "kitty.png")
+Meow = Sound(Screen1, Source = "meow.mp3")
+
+when Cat.Click():
+    call Meow.Play()
+STOP

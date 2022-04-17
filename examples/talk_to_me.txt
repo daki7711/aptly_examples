@@ -1,0 +1,11 @@
+Provide the user a text box and a button. When the button is clicked, speak the text in the text box. Call the app TalkToMe.
+
+START
+Screen1 = Screen(AppName = "TalkToMe")
+TextBox1 = TextBox(Screen1)
+Button1 = Button(Screen1, Text = "Speak")
+TextToSpeech1 = TextToSpeech(Screen1)
+
+when Button1.Click():
+    call TextToSpeech1.Speak(TextBox1.Text)
+STOP

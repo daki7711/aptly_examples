@@ -1,0 +1,26 @@
+Create an app with a button that simulates rolling a six sided dice. A image of a dice appears corresponding to the outcome.
+
+START
+Screen1 = Screen()
+Dice = Button(Screen1, Text = "Roll Dice")
+Dice1 = Image(Screen1, Picture = "dice1.png", Visible = False)
+Dice2 = Image(Screen1, Picture = "dice2.png", Visible = False)
+Dice3 = Image(Screen1, Picture = "dice3.png", Visible = False)
+Dice4 = Image(Screen1, Picture = "dice4.png", Visible = False)
+Dice5 = Image(Screen1, Picture = "dice5.png", Visible = False)
+Dice6 = Image(Screen1, Picture = "dice6.png", Visible = False)
+
+when Dice.Click():
+	set Dice1.Visible = True
+	set Dice2.Visible = True
+	set Dice3.Visible = True
+	set Dice4.Visible = True
+	set Dice5.Visible = True
+	set Dice6.Visible = True
+	set Dice1.Visible = False
+	set Dice2.Visible = False
+	set Dice3.Visible = False
+	set Dice4.Visible = False
+	set Dice5.Visible = False
+	set Dice6.Visible = False
+STOP

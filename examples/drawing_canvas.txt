@@ -1,0 +1,21 @@
+Create an app with a canvas that a user can draw on if they drag their finger across the screen. If the user clicks a red button, change the paint color to red. If the user clicks a blue button, change the paint color to blue. If the user clicks a green button, change the paint color to green.
+
+START
+Screen1 = Screen()
+MyCanvas = Canvas(Screen1, Height = 300, Width = 300)
+RedButton = Button(Screen1, Text = "Red")
+BlueButton = Button(Screen1, Text = "Blue")
+GreenButton = Button(Screen1, Text = "Green")
+
+when MyCanvas.Dragged(startX, startY, prevX, prevY, currentX, currentY):
+  call MyCanvas.DrawLine(prevX, prevY, currentX, currentY)
+
+when RedButton.Click():
+  set MyCanvas.PaintColor = "Red"
+
+when BlueButton.Click():
+  set MyCanvas.PaintColor = "Blue"
+
+when GreenButton.Click():
+  set MyCanvas.PaintColor = "Green"
+STOP

@@ -1,0 +1,33 @@
+Create a game called MoleMash where a mole randomly moves every 1 second. When the mole is tapped, add one to the player's score, vibrate the phone, and reposition the mole. If the player clicks a reset button, set the score to zero.
+
+START
+Screen1 = Screen(AppName = "MoleMash")
+MyCanvas = Canvas(Screen1, Height = 300, Width = 300)
+Mole = ImageSprite(MyCanvas, Picture = "mole.png", X = 124, Y = 86)
+ScoreLabel = Label(Screen1, Text = "---")
+ResetButton = Button(Screen1, Text = "Reset")
+Noise = Sound(Screen1, Interval = 500)
+MoleTimer = Clock(Screen1, TimerInterval = 1000)
+
+initialize score = 0
+
+to UpdateScore():
+    set ScoreLabel.Text = join("Score: ", score)
+
+to MoveMole():
+    set Mole.X = random_fraction() * (MyCanvas.Width - Mole.Width)
+    set Mole.Y = random_fraction() * (MyCanvas.Height - Mole.Height)
+
+when Mole.Touched(x, y):
+    set score = score + 1
+    call Noise.Vibrate(100)
+    call UpdateScore()
+    call MoveMole()
+
+when MoleTimer.Timer():
+    call MoveMole()
+
+when ResetButton.Click():
+    set score = 0
+    call UpdateScore()
+STOP

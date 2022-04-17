@@ -1,0 +1,9 @@
+Create an app with a list of colors including red, green, blue, and white. When the user selects a color from the list, change the screen's background color to match.
+
+START
+Screen1 = Screen(AppName = "Color Picker")
+ColorList = ListView(Screen1, ElementsFromString = "red,green,blue,white")
+
+when ColorList.AfterPicking():
+    set Screen1.BackgroundColor = lists_select_item([0xFFFF0000, 0xFF00FF00, 0xFF0000FF, 0xFFFFFFFF], ColorList.SelectionIndex)
+STOP

@@ -1,0 +1,34 @@
+Create a timer with start, pause and reset buttons.
+
+START
+Screen1 = Screen()
+StartButton = Button(Screen1, Text = "Start")
+PauseButton = Button(Screen1, Text = "Pause")
+ResetButton = Button(Screen1, Text = "Reset")
+HoursLabel = Label(Screen1, Text = "0")
+IntermediateLabel1 = Label(Screen1, Text = ":")
+MinutesLabel = Label(Screen1, Text = "0")
+IntermediateLabel2 = Label(Screen1, Text = ":")
+SecondsLabel = Label(Screen1, Text = "0")
+Clock1 = Clock(Screen1, TimerAlwaysFires = True, TimerEnabled = False, TimerInterval = 1000)
+
+when StartButton.Click():
+    set Clock1.TimerEnabled = True
+
+when Clock1.Timer():
+    if SecondsLabel.Text == 59:
+        set SecondsLabel.Text = 0
+        set MinutesLabel.Text = MinutesLabel.Text + 1
+        if MinutesLabel.Text == 60:
+            set MinutesLabel.Text = 0
+            set HoursLabel.Text = HoursLabel.Text + 1
+    set SecondsLabel.Text = SecondsLabel.Text + 1
+
+when PauseButton.Click():
+    set Clock1.TimerEnabled = False
+
+when ResetButton.Click():
+    set MillisecondsLabel.Text = 0
+    set SecondsLabel.Text = 0
+    set MinutesLabel.Text = 0
+STOP

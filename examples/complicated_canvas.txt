@@ -1,0 +1,36 @@
+Create an app with a picture of a kitty that the user can draw on. When the screen is tapped, a circle should be drawn. Allow the user to switch their paint colors by having red, blue and green buttons that change the paint color when pressed. Allow the user to change the background of the canvas by taking a photo. When a wipe button is pressed, the drawings should be cleared.
+
+START
+Screen1 = Screen()
+MyCanvas = Canvas(Screen1, Height = 300, Width = 300, Image = "kitty.png")
+RedButton = Button(Screen1, Text = "Red")
+BlueButton = Button(Screen1, Text = "Blue")
+GreenButton = Button(Screen1, Text = "Green")
+WipeButton = Button(Screen1, Text = "Wipe")
+TakePictureButton = Button(Screen1, Text = "Take Picture")
+Camera1 = Camera(Screen1)
+
+when MyCanvas.Dragged(startX, startY, prevX, prevY, currentX, currentY):
+    call MyCanvas.DrawLine(prevX, prevY, currentX, currentY)
+
+when MyCanvas.Touched(x,y):
+    call MyCanvas.DrawCircle(x,y,2,true)
+
+when RedButton.Click():
+    set MyCanvas.PaintColor = "Red"
+
+when BlueButton.Click():
+    set MyCanvas.PaintColor = "Blue"
+
+when GreenButton.Click():
+    set MyCanvas.PaintColor = "Green"
+
+when WipeButton.Click():
+	call MyCanvas.Clear()
+
+when TakePictureButton.click():
+	call Camera1.TakePicture()
+
+when Camera1.AfterPicture(image):
+	set MyCanvas.BackgroundImage = image
+STOP

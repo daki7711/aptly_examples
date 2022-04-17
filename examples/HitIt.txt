@@ -1,0 +1,33 @@
+Create a game called HitIt where you are able to move a sprite based on the orientation of your phone. When the sprite touches a black ball on the screen, add one to the player's score and reposition the black ball. If the player clicks a reset button, set the score to zero
+
+START
+Screen1 = Screen()
+MyCanvas = Canvas(Screen1, Height = 300, Width = 300)
+Ball = ImageSprite(MyCanvas, Picture = "ball.png", X = 124, Y = 86)
+ScoreLabel = Label(Screen1, Text = "---")
+ResetButton = Button(Screen1, Text = "Reset")
+Noise = Sound(Screen1, Interval = 500)
+BallTimer = Clock(Screen1, TimerInterval = 1000)
+
+initialize score = 0
+
+to UpdateScore():
+    set ScoreLabel.Text = join("Score: ", score)
+
+to MoveBall():
+    set Ball.X = random_fraction() * (MyCanvas.Width - Ball.Width)
+    set Ball.Y = random_fraction() * (MyCanvas.Height - Ball.Height)
+
+when Ball.Touched(x, y):
+    set score = score + 1
+    call Noise.Vibrate(100)
+    call UpdateScore()
+    call MoveBall()
+
+when BallTimer.Timer():
+    call MoveBall()
+
+when ResetButton.Click():
+    set score = 0
+    call UpdateScore()
+STOP

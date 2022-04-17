@@ -1,0 +1,17 @@
+Create an app that shows me where I am on a map and gives me my latitude and longitude coordinates.
+
+START
+Screen1 = Screen(BackgroundColor = "Black")
+Map1 = Map(Screen1, Width = -2, Height = -2)
+LocationButton = Button(Screen1, Text = "Show me where I am")
+LocationSensor1 = LocationSensor(Screen1, TimeInterval = 1000)
+LatitudeLabel = Label(Screen1, Text = "Latitude")
+LongitudeLabel = Label(Screen1, Text = "Longitude")
+
+when LocationButton.Click():
+	call Map1.PanTo(LocationSensor1.Latitude, LocationSensor1.Longitude, 15)
+
+when LocationSensor1.LocationChanged(latitude, longitude, altitude, speed):
+	set LatitudeLabel.Text = latitude
+	set LongitudeLabel.Text = longitude
+STOP

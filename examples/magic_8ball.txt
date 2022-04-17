@@ -1,0 +1,16 @@
+Create a magic 8 ball app with a picture of the magic 8 ball that gives the user an answer when they ask the app a question and shake the phone.
+
+START
+Screen1 = Screen()
+Magic8BallImage = Image(Screen1, Picture = "magic8ball.png")
+QuestionLabel = Label(Screen1, Text = "Ask the magic 8 ball a question, then shake the phone")
+AnswerLabel = Label(Screen1, Text = "")
+TextToSpeech1 = TextToSpeech(Screen1)
+AccelerometerSensor1 = AccelerometerSensor(Screen1)
+
+initialize PredictionsList = ["Outlook certain", "Yes", "No way", "It is certain", "Not likely", "Reply hazy", "Maybe", "Without a doubt"]
+
+when AccelerometerSensor1.Shaking():
+    set AnswerLabel.Text = lists_pick_random_item(PredictionsList)
+    call TextToSpeech1.Speak(AnswerLabel.Text)
+STOP

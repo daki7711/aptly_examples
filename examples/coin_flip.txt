@@ -1,0 +1,15 @@
+Create an app with a button that simulates flipping a coin. A image of coin appears corresponding to the outcome.
+
+START
+Screen1 = Screen()
+Coin = Button(Screen1, Text = "Flip Coin")
+Heads = Image(Screen1, Picture = "heads.png", Visible = False)
+Tails = Image(Screen1, Picture = "tails.png", Visible = False)
+
+initialize flip = False
+
+when Coin.Click():
+  set flip = (math_random_int(0, 1) == 1)
+  set Heads.Visible = flip
+  set Tails.Visible = not flip
+STOP

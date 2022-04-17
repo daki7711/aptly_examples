@@ -1,0 +1,16 @@
+Create an app where you are able to move a sprite based on the orientation of your phone.
+
+START
+Screen1 = Screen(ScreenOrientation = "Portrait")
+MyCanvas = Canvas(Screen1, Height = 300, Width = 300)
+Bug = ImageSprite(MyCanvas, Interval = 10, Picture = "bug.png", X = 124, Y = 86)
+OrientationSensor1 = OrientationSensor()
+Clock1 = Clock(TimerAlwaysFires = True, TimerEnabled = True, TimerInterval = 10)
+
+to MoveBug():
+	set Bug.Heading = OrientationSensor1.Angle
+	set Bug.Speed = OrientationSensor1.Magnitude * 100
+
+when ClockTimer1.Timer():
+	call MoveBug()
+STOP
