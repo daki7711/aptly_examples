@@ -9,5 +9,5 @@ DisplaySumTextBox = TextBox(Screen1)
 
 when sumButton.Click():
     if math_is_a_number(Num1TextBox.Text) and math_is_a_number(Num2TextBox.Text):
-        set DisplaySumTextBox.Text = text_join("The sum is ", Num1TextBox.Text, Num2TextBox.Text)
+        set DisplaySumTextBox.Text = text_join("The sum is ", Num1TextBox.Text + Num2TextBox.Text)
 STOP
