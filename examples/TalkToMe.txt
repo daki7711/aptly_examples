@@ -1,0 +1,17 @@
+
+
+Screen1 = Screen(AppName = 'TalkToMe', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/talk_to_me.html')
+TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1')
+Button1 = Button(Screen1, Text = 'Talk to me')
+AccelerometerSensor1 = AccelerometerSensor(Screen1)
+YandexTranslate1 = Translator(Screen1, ApiKey = 'trnsl.1.1.20220222T152152Z.ddce72090a8628f0.17c83ab1e4b6d06b3a81a5ee069bf88193cf25ed')
+TextToSpeech1 = TextToSpeech(Screen1)
+
+when YandexTranslate1.GotTranslation():
+  call TextToSpeech1.Speak(translation)
+
+when Button1.Click():
+  call YandexTranslate1.RequestTranslation('es', TextBox1.Text)
+
+when AccelerometerSensor1.Shaking():
+  call TextToSpeech1.Speak('Stop shaking me!')
