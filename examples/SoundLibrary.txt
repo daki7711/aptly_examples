@@ -1,0 +1,65 @@
+
+
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'mySoundLibrary', BackgroundColor = '&HFF888888', Title = 'Screen1', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/soundlibrary.html', Sizing = 'Fixed', ShowListsAsJson = False)
+SoundTitleLabel = Label(Screen1, Text = 'Sound Title')
+SoundTitleTextBox = TextBox(Screen1, Hint = 'Enter Title for Sound')
+HorizontalArrangement2 = HorizontalArrangement(Screen1, BackgroundColor = '&HFF888888')
+RecordSoundButton = Button(HorizontalArrangement2, BackgroundColor = '&HFF00FFFF', Shape = 1, Text = 'Record Sound')
+StopRecordingButton = Button(HorizontalArrangement2, BackgroundColor = '&HFFFF00FF', Shape = 1, Text = 'Stop Recording')
+SoundLibraryLabel = Label(Screen1, Text = 'Sound Library')
+HorizontalArrangement1 = HorizontalArrangement(Screen1, AlignHorizontal = 3, AlignVertical = 2, BackgroundColor = '&HFF888888', Height = 50, Width = -2)
+LoopCheckBox = CheckBox(HorizontalArrangement1, Height = -2, Width = -1022, Text = 'Loop')
+PlaySoundButton = Button(HorizontalArrangement1, BackgroundColor = '&HFF00FF00', Height = -2, Width = -1022, Shape = 1, Text = 'Play Sound')
+StopSoundButton = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFC800', Height = -2, Width = -1022, Shape = 1, Text = 'Stop Sound')
+EraseSoundButton = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Height = -2, Width = -1022, Shape = 1, Text = 'Erase Sound')
+SoundsListView = ListView(Screen1, Height = -2, Width = -2)
+SoundRecorder1 = SoundRecorder(Screen1)
+Player1 = Player(Screen1)
+TinyDB1 = TinyDB(Screen1, Namespace = 'SoundLibrary')
+
+initialize currentSoundTitle = None
+
+initialize currentSound = None
+
+initialize soundTitleList = []
+
+when EraseSoundButton.Click():
+  if SoundsListView.Selection != 0:
+    call TinyDB1.ClearTag(global currentSoundTitle)
+    lists_remove_item(global soundTitleList, SoundsListView.Selection)
+    set SoundsListView.Elements = global soundTitleList
+    set global currentSound = None
+    set global currentSoundTitle = None
+    set SoundsListView.SelectionIndex = 0
+
+when Screen1.Initialize():
+  set global soundTitleList = call TinyDB1.GetTags()
+  set SoundsListView.Elements = global soundTitleList
+
+when RecordSoundButton.Click():
+  call SoundRecorder1.Start()
+
+when SoundRecorder1.AfterSoundRecorded():
+  if SoundTitleTextBox.Text != None:
+    call TinyDB1.StoreValue(SoundTitleTextBox.Text, sound)
+    if not lists_is_in(SoundTitleTextBox.Text, global soundTitleList):
+      lists_add_items(global soundTitleList, SoundTitleTextBox.Text)
+    set SoundsListView.Elements = global soundTitleList
+    set SoundTitleTextBox.Text = None
+
+when StopRecordingButton.Click():
+  call SoundRecorder1.Stop()
+
+when SoundsListView.AfterPicking():
+  set global currentSoundTitle = SoundsListView.Selection
+  set global currentSound = call TinyDB1.GetValue(SoundsListView.Selection, None)
+
+when PlaySoundButton.Click():
+  set Player1.Loop = LoopCheckBox.Checked
+  set Player1.Source = global currentSound
+  call Player1.Start()
+
+when StopSoundButton.Click():
+  call Player1.Stop()
+
+
