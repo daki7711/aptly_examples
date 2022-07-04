@@ -1,0 +1,14 @@
+
+
+Screen1 = Screen(AppName = 'BallBounce', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/ball_bounce.html')
+Canvas1 = Canvas(Screen1, Height = -2, Width = -2)
+Ball1 = Ball(Canvas1, PaintColor = '&HFF0000FF', Radius = 10, X = 190, Y = 133)
+
+when Ball1.Flung():
+  set Ball1.Heading = heading
+  set Ball1.Speed = speed
+
+when Ball1.EdgeReached():
+  call Ball1.Bounce(edge)
+
+
