@@ -1,0 +1,30 @@
+
+
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'Fake Voices', BackgroundColor = '&HFF1A2C42', Title = 'FakeVoices', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/Fake_Voices.html')
+SpacerHorizontalArrangement = HorizontalArrangement(Screen1, BackgroundColor = '&HFF1A2C42', Height = -1005, Width = -2)
+SaySomethingButtonHorizontalArrangement = HorizontalArrangement(Screen1, AlignHorizontal = 3, AlignVertical = 2, BackgroundColor = '&HFF1A2C42', Height = -1010, Width = -2)
+SaySomethingButton = Button(SaySomethingButtonHorizontalArrangement, BackgroundColor = '&HFFBE2F29', Shape = 1, Text = 'Say Something!', TextColor = '&HFFFFFFFF')
+SpacerHorizontalArrangement2 = HorizontalArrangement(Screen1, BackgroundColor = '&HFF1A2C42', Height = -1002, Width = -2)
+SpeechTextBox = TextBox(Screen1, BackgroundColor = '&HFFECAF44', FontBold = True, FontTypeface = 2, Height = -1020, Width = -2, Hint = '(Your words show up here)', MultiLine = True, TextColor = '&HFF1A2C42')
+SpacerHorizontalArrangement3 = HorizontalArrangement(Screen1, BackgroundColor = '&HFF1A2C42', Height = -1007, Width = -2)
+VerticalArrangement1 = VerticalArrangement(Screen1, AlignHorizontal = 3, Height = -2, Width = -2)
+HearTheWordsButton = Button(VerticalArrangement1, FontBold = True, Text = 'Hear the Words Read Back')
+PitchLabel = Label(VerticalArrangement1, FontBold = True, FontSize = 20, Text = 'Change the Pitch', TextColor = '&HFFFFFFFF')
+PitchSlider = Slider(VerticalArrangement1, Width = -2, MaxValue = 2, MinValue = 0, ThumbPosition = 1)
+RateLabel = Label(VerticalArrangement1, FontBold = True, FontSize = 20, Text = 'Change the Speed', TextColor = '&HFFFFFFFF')
+RateSlider = Slider(VerticalArrangement1, Width = -2, MaxValue = 2, MinValue = 0, ThumbPosition = 1)
+SpeechRecognizer1 = SpeechRecognizer(Screen1)
+TextToSpeech1 = TextToSpeech(Screen1)
+
+when SaySomethingButton.Click():
+  call SpeechRecognizer1.GetText()
+
+when SpeechRecognizer1.AfterGettingText():
+  set SpeechTextBox.Text = result
+
+when HearTheWordsButton.Click():
+  set TextToSpeech1.Pitch = PitchSlider.ThumbPosition
+  set TextToSpeech1.SpeechRate = RateSlider.ThumbPosition
+  call TextToSpeech1.Speak(SpeechTextBox.Text)
+
+
