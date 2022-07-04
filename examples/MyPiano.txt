@@ -1,0 +1,49 @@
+
+
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'MyPiano', ScreenOrientation = 'landscape', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1, Height = -1050, Width = -2)
+Cnote = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Height = -2, Width = -1010, Text = 'C')
+Dnote = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFC800', Height = -2, Width = -1010, Text = 'D')
+Enote = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFFF00', Height = -2, Width = -1010, Text = 'E')
+Fnote = Button(HorizontalArrangement1, BackgroundColor = '&HFF00FF00', Height = -2, Width = -1010, Text = 'F')
+Gnote = Button(HorizontalArrangement1, BackgroundColor = '&HFF00FFFF', Height = -2, Width = -1010, Text = 'G')
+Anote = Button(HorizontalArrangement1, BackgroundColor = '&HFF0000FF', Height = -2, Width = -1010, Text = 'A')
+Bnote = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF00FF', Height = -2, Width = -1010, Text = 'B')
+HighCnote = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFAFAF', Height = -2, Width = -1010, Text = 'High C')
+NotesLabel = Label(Screen1)
+ClearButton = Button(Screen1, Text = 'Clear Notes')
+NotesPlayer = Player(Screen1)
+
+to PlayNote(note):
+  set NotesPlayer.Source = text_join(note, 'Note.wav')
+  call NotesPlayer.Start()
+  set NotesLabel.Text = text_join(NotesLabel.Text, ' ', note)
+
+when Cnote.Click():
+  call PlayNote('C')
+
+when Dnote.Click():
+  call PlayNote('D')
+
+when Enote.Click():
+  call PlayNote('E')
+
+when Fnote.Click():
+  call PlayNote('F')
+
+when Gnote.Click():
+  call PlayNote('G')
+
+when Anote.Click():
+  call PlayNote('A')
+
+when Bnote.Click():
+  call PlayNote('B')
+
+when HighCnote.Click():
+  call PlayNote('HighC')
+
+when ClearButton.Click():
+  set NotesLabel.Text = None
+
+
