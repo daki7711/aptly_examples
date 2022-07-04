@@ -1,0 +1,11 @@
+
+
+Screen1 = Screen(AppName = 'talk_to_me', Title = 'Screen1')
+TextBox1 = TextBox(Screen1, Width = -2, Hint = 'Hint for TextBox1')
+Button1 = Button(Screen1, Text = 'Send to Alexa')
+CloudDB1 = CloudDB(Screen1, ProjectID = 'talk_to_me')
+
+when Button1.Click():
+  call CloudDB1.StoreValue('wordsForAlexa', TextBox1.Text)
+
+
