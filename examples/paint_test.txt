@@ -1,0 +1,16 @@
+
+
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'TherapistBOT_Starter', ScreenOrientation = 'portrait', Title = 'Screen1', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/therapistBOT.html')
+VerticalArrangement1 = VerticalArrangement(Screen1)
+Canvas1 = Canvas(VerticalArrangement1, BackgroundImage = 'Kalaniot.jpeg', Width = -2)
+Button1 = Button(VerticalArrangement1, Width = -2)
+Notifier1 = Notifier(Screen1)
+
+initialize paintColor = color_make_color([0, 0, 0])
+
+when Canvas1.TouchDown():
+  set global paintColor = call Canvas1.GetPixelColor(x, y)
+  call Notifier1.ShowAlert(text_join('X = ', x, ' Y =  ', y, ' Paint = ', color_split_color(global paintColor)))
+  set Button1.BackgroundColor = global paintColor
+
+
