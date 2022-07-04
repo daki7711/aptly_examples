@@ -1,0 +1,11 @@
+
+
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'HelloItsMe', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1')
+Button1 = Button(Screen1, Height = 300, Width = -2, Image = 'Smileyface.png')
+Label1 = Label(Screen1, BackgroundColor = '&HFF0000FF', FontSize = 30, Text = "Hello It's Me!", TextColor = '&HFFFFFFFF')
+Player1 = Player(Screen1, Source = 'recording.m4a')
+
+when Button1.Click():
+  call Player1.Start()
+
+
