@@ -1,0 +1,13 @@
+Create a multiplication app that takes 2 text inputs from the user and computes the multiplication when a button is pressed.
+
+START
+Screen1 = Screen()
+Num1TextBox = TextBox(Screen1, Hint = "Number 1")
+Num2TextBox = TextBox(Screen1, Hint = "Number 2")
+mulButton = Button(Screen1, Text = "MUL")
+DisplaySumTextBox = TextBox(Screen1)
+
+when mulButton.Click():
+    if math_is_a_number(Num1TextBox.Text) and math_is_a_number(Num2TextBox.Text):
+        set DisplaySumTextBox.Text = text_join("The sum is ", Num1TextBox.Text * Num2TextBox.Text)
+STOP
