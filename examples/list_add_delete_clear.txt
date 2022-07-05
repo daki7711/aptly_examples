@@ -1,0 +1,31 @@
+
+
+Screen1 = Screen(AppName = 'list_operation', Title = 'Screen1')
+TextBox1 = TextBox(Screen1, Width = -2, Hint = 'Hint for TextBox1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1, Width = -2)
+Button1 = Button(HorizontalArrangement1, Width = -1030, Text = 'Enter Item')
+Button2 = Button(HorizontalArrangement1, Width = -1030, Text = 'Erase Item')
+Button3 = Button(HorizontalArrangement1, Width = -1030, Text = 'Clear All')
+ListView1 = ListView(Screen1, Height = -2)
+
+initialize list = ['Dog', 'Cat']
+
+when Screen1.Initialize():
+  set ListView1.Elements = global list
+
+when Button1.Click():
+  lists_add_items(global list, TextBox1.Text)
+  set ListView1.Elements = global list
+  set TextBox1.Text = None
+
+when Button2.Click():
+  if ListView1.SelectionIndex != 0:
+    lists_remove_item(global list, TextBox1.Text)
+    set ListView1.Elements = global list
+    set ListView1.SelectionIndex = 0
+
+when Button3.Click():
+  set global list = []
+  set ListView1.Elements = global list
+
+
