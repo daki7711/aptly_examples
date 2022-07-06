@@ -1,4 +1,4 @@
-
+Make an app where there are 8 key buttons from C to the next C. When a button is pressed it outputs the corresponding sound
 
 Screen1 = Screen(AlignHorizontal = 3, AppName = 'MyPiano', ScreenOrientation = 'landscape', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1')
 HorizontalArrangement1 = HorizontalArrangement(Screen1, Height = -1050, Width = -2)
