@@ -1,5 +1,6 @@
 Make an app that manages a List of text. It has three buttons each capable of adding an element, deleting an element, and clearing out all the elements
 
+START
 Screen1 = Screen(AppName = 'list_operation', Title = 'Screen1')
 TextBox1 = TextBox(Screen1, Width = -2, Hint = 'Hint for TextBox1')
 HorizontalArrangement1 = HorizontalArrangement(Screen1, Width = -2)
@@ -27,5 +28,5 @@ when Button2.Click():
 when Button3.Click():
   set global list = []
   set ListView1.Elements = global list
-
+STOP
 
