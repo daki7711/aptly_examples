@@ -1,6 +1,7 @@
+Create an app where you can record a sound that will be stored in the mobile device's storage system. You can pick a record and play, stop, and erase the record.
 
-
-Screen1 = Screen(AlignHorizontal = 3, AppName = 'mySoundLibrary', BackgroundColor = '&HFF888888', Title = 'Screen1', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/soundlibrary.html', Sizing = 'Fixed', ShowListsAsJson = False)
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'mySoundLibrary', BackgroundColor = '&HFF888888', Title = 'Screen1', Sizing = 'Fixed', ShowListsAsJson = False)
 SoundTitleLabel = Label(Screen1, Text = 'Sound Title')
 SoundTitleTextBox = TextBox(Screen1, Hint = 'Enter Title for Sound')
 HorizontalArrangement2 = HorizontalArrangement(Screen1, BackgroundColor = '&HFF888888')
@@ -61,5 +62,5 @@ when PlaySoundButton.Click():
 
 when StopSoundButton.Click():
   call Player1.Stop()
-
+STOP
 
