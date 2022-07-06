@@ -1,10 +1,11 @@
+Create an app where there is a textbox and a button. When you click on the button it will speak the text in the textbox into spanish. Also, when the devices is shaken it speaks out "Stop shaking me!"
 
-
-Screen1 = Screen(AppName = 'TalkToMe', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/talk_to_me.html')
+START
+Screen1 = Screen(AppName = 'TalkToMe', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1')
 TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1')
 Button1 = Button(Screen1, Text = 'Talk to me')
 AccelerometerSensor1 = AccelerometerSensor(Screen1)
-YandexTranslate1 = Translator(Screen1, ApiKey = 'trnsl.1.1.20220222T152152Z.ddce72090a8628f0.17c83ab1e4b6d06b3a81a5ee069bf88193cf25ed')
+YandexTranslate1 = Translator(Screen1)
 TextToSpeech1 = TextToSpeech(Screen1)
 
 when YandexTranslate1.GotTranslation():
@@ -15,3 +16,5 @@ when Button1.Click():
 
 when AccelerometerSensor1.Shaking():
   call TextToSpeech1.Speak('Stop shaking me!')
+STOP
+
