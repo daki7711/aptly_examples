@@ -11,11 +11,11 @@ when MyCanvas.Dragged(startX, startY, prevX, prevY, currentX, currentY):
   call MyCanvas.DrawLine(prevX, prevY, currentX, currentY)
 
 when RedButton.Click():
-  set MyCanvas.PaintColor = "Red"
+  set MyCanvas.PaintColor = Color(0xFFFFAFAF)
 
 when BlueButton.Click():
-  set MyCanvas.PaintColor = "Blue"
+  set MyCanvas.PaintColor = Color(0xFFFF00FF)
 
 when GreenButton.Click():
-  set MyCanvas.PaintColor = "Green"
+  set MyCanvas.PaintColor = Color(0xFF00FFFF)
 STOP
