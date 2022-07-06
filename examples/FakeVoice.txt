@@ -1,5 +1,6 @@
 Make an app that records your voice, see your words in a text box where you can edit, a button that triggers to produce a fake computer voice reading the text, and sliders that control the pitch and speech rate.
 
+START
 Screen1 = Screen(AlignHorizontal = 3, AppName = 'Fake Voices', BackgroundColor = '&HFF1A2C42', Title = 'FakeVoices', TutorialURL = 'http://appinventor.mit.edu/yrtoolkit/yr/tutorials/Fake_Voices.html')
 SpacerHorizontalArrangement = HorizontalArrangement(Screen1, BackgroundColor = '&HFF1A2C42', Height = -1005, Width = -2)
 SaySomethingButtonHorizontalArrangement = HorizontalArrangement(Screen1, AlignHorizontal = 3, AlignVertical = 2, BackgroundColor = '&HFF1A2C42', Height = -1010, Width = -2)
@@ -26,5 +27,5 @@ when HearTheWordsButton.Click():
   set TextToSpeech1.Pitch = PitchSlider.ThumbPosition
   set TextToSpeech1.SpeechRate = RateSlider.ThumbPosition
   call TextToSpeech1.Speak(SpeechTextBox.Text)
-
+STOP
 
