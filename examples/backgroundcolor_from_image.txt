@@ -1,5 +1,6 @@
 Create an app that changes the color of the background based on the image in the center
 
+START
 Screen1 = Screen(AlignHorizontal = 3, AlignVertical = 2, AppName = 'dragImage', BackgroundColor = '&HFF444444', ScreenOrientation = 'portrait', Title = 'Screen1', TitleVisible = False)
 Button1 = Button(Screen1, Text = 'Get Colour')
 VerticalArrangement1 = VerticalArrangement(Screen1, AlignHorizontal = 3, AlignVertical = 2, Height = 300, Width = 400)
@@ -15,4 +16,5 @@ when Canvas1.Dragged():
 
 when Button1.Click():
   set Screen1.BackgroundColor = call Canvas1.GetPixelColor(Canvas1.Width / 2, Canvas1.Height / 2)
+STOP
 
