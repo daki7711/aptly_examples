@@ -1,4 +1,4 @@
-
+Make an app that manages a List of text. It has three buttons each capable of adding an element, deleting an element, and clearing out all the elements
 
 Screen1 = Screen(AppName = 'list_operation', Title = 'Screen1')
 TextBox1 = TextBox(Screen1, Width = -2, Hint = 'Hint for TextBox1')
