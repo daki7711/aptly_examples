@@ -1,0 +1,46 @@
+Create a program where you can move left and right. There is a target you can shoot at and when you click on your character a bullet will burst out. If the bullet hits the target you gain one point
+
+START
+Screen1 = Screen(AppName = 'shoot_things', Title = 'Screen1')
+Canvas1 = Canvas(Screen1, Width = -2, Height = 300)
+TargetSprite = ImageSprite(Canvas1, Picture = 'mole.png', X = 124, Y = 47)
+Bullet = Ball(Canvas1, Visible = False, X = 151, Y = 164)
+ShooterSprite = ImageSprite(Canvas1, Picture = 'spacecraft1.png', X = 125, Y = 253, Width = 65, Height = 65)
+HorizontalArrangement2 = HorizontalArrangement(Screen1, Width = -2, Height = 35)
+ScoreLabel = Label(HorizontalArrangement2, Text = 'Score:')
+Score = Label(HorizontalArrangement2, Text = 0)
+HorizontalArrangement1 = HorizontalArrangement(Screen1, Width = -2, Height = -2)
+ButtonLeft = Button(HorizontalArrangement1, Text = '←', TextAlignment = 0, Width = -2, Height = -2)
+Button1 = Button(HorizontalArrangement1, Text = 'Text for Button1', Visible = False, Width = -2)
+ButtonRight = Button(HorizontalArrangement1, Text = '→', TextAlignment = 2, Width = -2, Height = -2)
+Clock1 = Clock(Screen1, TimerEnabled = False, TimerInterval = 100)
+TargetClock = Clock(Screen1)
+
+when ButtonLeft.Click():
+  set ShooterSprite.X = ShooterSprite.X - 15
+
+when ButtonRight.Click():
+  set ShooterSprite.X = ShooterSprite.X + 15
+
+when Clock1.Timer():
+  set Bullet.Y = Bullet.Y - 10
+
+when Bullet.CollidedWith():
+  set Bullet.Visible = False
+  set Score.Text = Score.Text + 1
+
+when ShooterSprite.Touched():
+  call Bullet.MoveTo(ShooterSprite.X + ShooterSprite.Width / 2, ShooterSprite.Y - 20)
+  set Bullet.Visible = True
+  set Clock1.TimerEnabled = True
+
+when Bullet.EdgeReached():
+  set Bullet.Visible = False
+
+when TargetSprite.EdgeReached():
+  set TargetSprite.X = 10
+
+when TargetClock.Timer():
+  set TargetSprite.X = TargetSprite.X + 10
+STOP
+
