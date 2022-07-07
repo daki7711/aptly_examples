@@ -1,5 +1,6 @@
 Create an application that has two buttons, one that generates a random fraction and another that generates a random integer from 1 to 100
 
+START
 Screen1 = Screen(AppName = 'Random', Title = 'Screen1')
 Button1 = Button(Screen1, Text = 'Generate Random Fraction')
 Button2 = Button(Screen1, Text = 'Generate Random Integer')
@@ -10,4 +11,5 @@ when Button1.Click():
 
 when Button2.Click():
   set TextBox1.Text = math_random_int(1, 100)
+STOP
 
