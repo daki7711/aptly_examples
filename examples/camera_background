@@ -1,0 +1,15 @@
+Create an app that takes a picture and sets the canvas background as the taken picture
+
+START
+Screen1 = Screen(AlignHorizontal = 3, Title = 'Screen1')
+Canvas1 = Canvas(Screen1, Width = -2, Height = -2)
+Button1 = Button(Screen1, FontSize = 16, Text = '사진찍기')
+Camera1 = Camera(Screen1)
+
+when Button1.Click():
+  call Camera1.TakePicture()
+
+when Camera1.AfterPicture():
+  set Canvas1.BackgroundImage = image
+STOP
+
