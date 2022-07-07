@@ -1,0 +1,10 @@
+Create an application that changes the background color every second
+
+START
+Screen1 = Screen(AppName = 'RaveParty', Title = 'Screen1')
+Canvas1 = Canvas(Screen1, Height = -2, Width = -2)
+Clock1 = Clock(Screen1, TimerInterval = 6000)
+
+when Clock1.Timer():
+  set Canvas1.BackgroundColor = lists_pick_random_item([Color(#FFFF00FF), Color(#FFFFC800), Color(#ff0000), Color(#FF0000FF), Color(#FF00FF00)])
+STOP
