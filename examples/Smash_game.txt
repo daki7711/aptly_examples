@@ -1,0 +1,45 @@
+Create a game where based on the difficulty of the game, the image moves around the screen and if the user touches the image the user gets points.
+
+START
+Screen1 = Screen(AppName = 'LandonH_Sprite_Smash')
+Canvas1 = Canvas(Screen1, Height = 300, Width = -2)
+ImageSprite1 = ImageSprite(Canvas1, Height = 60, Width = 60, Picture = 'Photoon10-12-15at10.13AM.png', X = 84, Y = 23)
+LabelScore = Label(Screen1, Text = 'Score: ')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Button2 = Button(HorizontalArrangement1, BackgroundColor = '&HFF00FF00', Shape = 3, Text = 'Easy')
+Button3 = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFFF00', Shape = 3, Text = 'Medium')
+Button4 = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Shape = 3, Text = 'Hard')
+Button1 = Button(Screen1, Text = 'Reset')
+Clock1 = Clock(Screen1, TimerInterval = 100)
+
+initialize score = 0
+
+to move_sprite():
+  set ImageSprite1.X = math_random_int(1, (Canvas1.Width - ImageSprite1.Width))
+  set ImageSprite1.Y = math_random_int(1, (Canvas1.Height - ImageSprite1.Height))
+
+when ImageSprite1.Touched():
+  set global score = global score + 1
+  set LabelScore.Text = text_join('Score = ', global score)
+  if global score == 25:
+    set Clock1.TimerInterval = 300
+  if global score == 50:
+    set Clock1.TimerInterval = 100
+
+when Button1.Click():
+  set global score = 0
+  set Clock1.TimerInterval = 500
+
+when Button2.Click():
+  set Clock1.TimerInterval = 500
+
+when Button3.Click():
+  set Clock1.TimerInterval = 300
+
+when Clock1.Timer():
+  call move_sprite()
+
+when Button4.Click():
+  set Clock1.TimerInterval = 100
+STOP
+
