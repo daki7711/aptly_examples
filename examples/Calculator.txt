@@ -1,0 +1,34 @@
+Make a Calculator that can add, subtract, multiply, and divide
+
+START
+Screen1 = Screen(AppName = 'CALCULATOR', Icon = 'calculator.png', Title = 'Screen1')
+Label1 = Label(Screen1, Text = 'ENTER 1ST NUMBER')
+TextBox1 = TextBox(Screen1, Width = -2, MultiLine = True, NumbersOnly = True)
+Label2 = Label(Screen1, Text = 'ENTER 2ND NUMBER')
+TextBox2 = TextBox(Screen1, Width = -2, MultiLine = True, NumbersOnly = True)
+OUTPUT = Label(Screen1, Text = 'OUTPUT')
+ANSWER = TextBox(Screen1, Width = -2, MultiLine = True, NumbersOnly = True)
+TableArrangement1 = TableArrangement(Screen1, Columns = 3, Width = -2)
+ADD = Button(TableArrangement1, Column = 0, Width = 95, Row = 0, Text = 'ADD')
+SUB = Button(TableArrangement1, Column = 1, Width = 100, Row = 0, Text = 'SUB')
+MULTI = Button(TableArrangement1, Column = 0, Width = 100, Row = 1, Text = 'MULTI')
+DIV = Button(TableArrangement1, Column = 1, Width = 100, Row = 1, Text = 'DIV')
+CLR = Button(TableArrangement1, Column = 2, Width = 100, Row = 1, Text = 'CLR')
+
+when CLR.Click():
+  set TextBox1.Text = 0
+  set TextBox2.Text = 0
+  set ANSWER.Text = 0
+
+when ADD.Click():
+  set ANSWER.Text = TextBox1.Text + TextBox2.Text
+
+when SUB.Click():
+  set ANSWER.Text = TextBox1.Text - TextBox2.Text
+
+when MULTI.Click():
+  set ANSWER.Text = TextBox1.Text * TextBox2.Text
+
+when DIV.Click():
+  set ANSWER.Text = TextBox1.Text / TextBox2.Text
+STOP
