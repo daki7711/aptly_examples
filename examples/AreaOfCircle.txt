@@ -1,0 +1,11 @@
+Create an app that calculates the area of a circle
+
+START
+Screen1 = Screen(AppName = 'area', Title = 'Screen1')
+TextBox1 = TextBox(Screen1)
+Button1 = Button(Screen1, Text = 'Calculate')
+Label1 = Label(Screen1)
+
+when Button1.Click():
+  set Label1.Text = text_join('Area：', 3.14159 * TextBox1.Text ^ 2)
+STOP
