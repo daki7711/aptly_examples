@@ -1,0 +1,22 @@
+Create ap Paris Tour Guide application, it will show three places in Paris to visit. When the user clicks one of the places it will show the place in the map
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'ParisMapTour', Title = 'AppMapTour')
+Image1 = Image(Screen1, Picture = 'metro.jpg')
+Label1 = Label(Screen1, Text = 'Descubre París con tu móvil')
+ListPicker1 = ListPicker(Screen1, Text = 'Elige un destino de París')
+WebViewer1 = WebViewer(Screen1)
+ActivityStarter1 = ActivityStarter(Screen1, Action = 'android.intent.action.VIEW', ActivityClass = 'com.google.android.maps.MapsActivity', ActivityPackage = 'com.google.android.apps.maps')
+
+initialize Destinos = ['Tour Eiffel', 'Musée du Louvre', 'Cathédrale Notre Dame']
+
+initialize DataURIs = ['https://www.google.es/maps/@48.858612,2.29472,3a,90y,32.03h,86.72t/data=!3m5!1e1!3m3!1snZkIPvVbI10AAAQYbwygJA!2e0!3e11!6m1!1e1?hl=es', 'https://www.google.es/maps/place/Louvre+Pyramid/@48.861342,2.334533,3a,75y,110.63h,90t/data=!3m4!1e1!3m2!1s0VS8Ymp4kvXs1Uy5okl2tA!2e0!4m2!3m1!1s0x0000000000000000:0xb0088e1f7c07f451!6m1!1e1?hl=es', 'https://www.google.es/maps/place/Cath%C3%A9drale+Notre-Dame+de+Paris/@48.85327,2.350163,3a,90y,183.48h,132.16t/data=!3m4!1e1!3m2!1sbreicJk_KiBREY4hx1pbRg!2e0!4m2!3m1!1s0x47e671e19ff53a01:0x36401da7abfa068d!6m1!1e1?hl=es']
+
+when Screen1.Initialize():
+  set ListPicker1.Elements = global Destinos
+
+when ListPicker1.AfterPicking():
+  set ActivityStarter1.DataUri = lists_select_item(global DataURIs, ListPicker1.SelectionIndex)
+  call ActivityStarter1.StartActivity()
+STOP
+
