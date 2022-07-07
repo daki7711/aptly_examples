@@ -1,0 +1,63 @@
+Make a game where the ball wonders around the screen, if the ball hits the paddle the user gets points but if the ball hits the wall the game is over
+
+START
+Screen1 = Screen(AppName = 'Pong', ScreenOrientation = 'portrait', Title = 'PingPong')
+Canvas1 = Canvas(Screen1, BackgroundColor = '&HFFCCCCCC', Height = -2, Width = -2, TextAlignment = 0)
+ImageSprite1 = ImageSprite(Canvas1, Height = 10, Width = 75, Picture = 'Paddle.gif', X = 114, Y = 299)
+Ball1 = Ball(Canvas1, Enabled = False, Heading = 25, Interval = 50, PaintColor = '&HFF0000FF', Radius = 10, Speed = 0, X = 142, Y = 28)
+HorizontalArrangement1 = HorizontalArrangement(Screen1, Width = -2)
+ButtonStart = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF00FF', FontTypeface = 3, Width = -2, Shape = 2, Text = 'Start')
+SoundOnCheckBox = CheckBox(HorizontalArrangement1, Checked = True, Text = 'Sound On')
+ButtonReset = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', FontTypeface = 3, Width = -2, Shape = 2, Text = 'Reset')
+HorizontalArrangement2 = HorizontalArrangement(Screen1, Width = -2)
+LabelScore = Label(HorizontalArrangement2, HasMargins = False, Width = -2, Text = 'Score: 0')
+LabelHighscore = Label(HorizontalArrangement2, Width = -2, Text = 'Highscore: 0')
+Sound1 = Sound(Screen1)
+
+initialize highscore = 0
+
+initialize score = 0
+
+to changeAndShowScore(newScore):
+  set global score = newScore
+  set LabelScore.Text = text_join('Score:', global score)
+
+to playSound(source):
+  if SoundOnCheckBox.Checked:
+    set Sound1.Source = source
+    call Sound1.Play()
+
+when ButtonStart.Click():
+  call Ball1.MoveTo(Canvas1.Width / 2, 0)
+  set Ball1.Enabled = True
+  set Ball1.Heading = math_random_int(225, 315)
+  set Ball1.Speed = 10
+  set Ball1.Interval = 10
+  call changeAndShowScore(0)
+
+when ButtonReset.Click():
+  call Ball1.MoveTo(Canvas1.Width / 2, 0)
+  set Ball1.Enabled = False
+  set Ball1.Speed = 10
+  call changeAndShowScore(0)
+
+when ImageSprite1.Dragged():
+  call ImageSprite1.MoveTo(currentX - 37.5, ImageSprite1.Y)
+
+when Ball1.CollidedWith():
+  set Ball1.Heading = 360 - Ball1.Heading
+  call changeAndShowScore(global score + 1)
+  if global score > global highscore:
+    set LabelHighscore.Text = text_join('Highscore: ', global score)
+  call playSound('Noink.mp3')
+  set Ball1.Speed = Ball1.Speed + 0.1
+
+when Ball1.EdgeReached():
+  if edge == -1:
+    set LabelScore.Text = 'Game Over'
+    set Ball1.Enabled = False
+    call playSound('Buzzer.mp3')
+  else:
+    call Ball1.Bounce(edge)
+    call playSound('Note.wav')
+STOP
