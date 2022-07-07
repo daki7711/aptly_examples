@@ -1,5 +1,6 @@
 Make an app where there are 8 key buttons from C to the next C. When a button is pressed it outputs the corresponding sound
 
+START
 Screen1 = Screen(AlignHorizontal = 3, AppName = 'MyPiano', ScreenOrientation = 'landscape', ShowListsAsJson = False, Sizing = 'Fixed', Title = 'Screen1')
 HorizontalArrangement1 = HorizontalArrangement(Screen1, Height = -1050, Width = -2)
 Cnote = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Height = -2, Width = -1010, Text = 'C')
@@ -45,5 +46,5 @@ when HighCnote.Click():
 
 when ClearButton.Click():
   set NotesLabel.Text = None
-
+STOP
 
