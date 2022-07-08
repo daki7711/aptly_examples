@@ -1,0 +1,32 @@
+Make an app where the user can change the stage size and color
+
+START
+Screen1 = Screen(Title = 'Screen1')
+Label1 = Label(Screen1, FontSize = '18.0', Text = 'PAINTER', TextColor = '&HFF0000FF')
+stage = Canvas(Screen1, BackgroundColor = '&HFF000000', Width = -2, Height = 200)
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+red = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Text = 'RED')
+blue = Button(HorizontalArrangement1, BackgroundColor = '&HFF0000FF', Text = 'BLUE')
+thin = Button(HorizontalArrangement1, Text = 'THIN')
+thick = Button(HorizontalArrangement1, Text = 'THICK')
+clear = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFC800', Text = 'CLEAR')
+
+when stage.Dragged():
+  call stage.DrawLine(prevX, prevY, currentX, currentY)
+
+when thin.Click():
+  set stage.LineWidth = 4
+
+when red.Click():
+  set stage.PaintColor = Color(#ff0000)
+
+when thick.Click():
+  set stage.LineWidth = 8
+
+when blue.Click():
+  set stage.PaintColor = Color(#0000ff)
+
+when clear.Click():
+  call stage.Clear()
+STOP
+
