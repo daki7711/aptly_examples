@@ -1,0 +1,25 @@
+Create an app where it has a record speech of Martin Luther King and Malcom, when one is playing the other stops
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'IHaveADreamStarter', BackgroundColor = '&HFF000000', Icon = '228px-MLK_and_Malcolm_X_USNWR_cropped.jpg', Scrollable = True, Title = 'I Have a Dream')
+Image1 = Image(Screen1, Picture = '228px-MLK_and_Malcolm_X_USNWR_cropped.jpg')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Button1 = Button(HorizontalArrangement1, Image = 'mlk152x129.jpg')
+Button2 = Button(HorizontalArrangement1, Image = 'malcolm152x129.jpg')
+Player1MLK = Player(Screen1, Source = 'king.mp3')
+Player2Malcom = Player(Screen1, Source = 'malcolmx.mp3')
+
+when Button1.Click():
+  call Player2Malcom.Pause()
+  if Player1MLK.IsPlaying:
+    call Player1MLK.Pause()
+  else:
+    call Player1MLK.Start()
+
+when Button2.Click():
+  call Player1MLK.Pause()
+  if Player2Malcom.IsPlaying:
+    call Player2Malcom.Pause()
+  else:
+    call Player2Malcom.Start()
+  STOP
