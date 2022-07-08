@@ -1,0 +1,31 @@
+Create an app that changes the background based on the button it was clickec
+
+START
+Screen1 = Screen(AppName = 'p27_dibujo_en_lienzo')
+Lienzo1 = Canvas(Screen1, TextAlignment = 0, Width = -2, Height = -2)
+DisposiciónHorizontal1 = HorizontalArrangement(Screen1)
+Botón1 = Button(DisposiciónHorizontal1, Text = 'Borrar')
+Botón2 = Button(DisposiciónHorizontal1, FontBold = True, Text = 'Rojo', TextColor = '&HFFFF0000')
+Botón3 = Button(DisposiciónHorizontal1, FontBold = True, Text = 'Verde', TextColor = '&HFF00FF00')
+Botón4 = Button(DisposiciónHorizontal1, FontBold = True, Text = 'Azul', TextColor = '&HFF0000FF')
+Botón5 = Button(DisposiciónHorizontal1, FontBold = True, Text = 'Negro')
+
+when Lienzo1.Dragged():
+  call Lienzo1.DrawLine(prevX, prevY, currentX, currentY)
+
+when Botón1.Click():
+  call Lienzo1.Clear()
+
+when Botón2.Click():
+  set Lienzo1.PaintColor = Color(#ff0000)
+
+when Botón3.Click():
+  set Lienzo1.PaintColor = Color(#006600)
+
+when Botón4.Click():
+  set Lienzo1.PaintColor = Color(#000099)
+
+when Botón5.Click():
+  set Lienzo1.PaintColor = Color(#000000)
+STOP
+
