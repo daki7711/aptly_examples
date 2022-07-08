@@ -1,0 +1,37 @@
+Create a quiz app where there some questions and response correct or incorrect based on the user's answer
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'PresidentsQuizStarter', Scrollable = True, Title = 'U.S. Presidents')
+ImageQuestion = Image(Screen1, Picture = 'roosChurch.gif', Width = -2, Height = 250)
+LabelQuestion = Label(Screen1, Text = 'Question 1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+TextBox1 = TextBox(HorizontalArrangement1, Hint = 'Hint for TextBox1', Width = -2)
+ButtonAnswer = Button(HorizontalArrangement1, Text = 'Answer', Width = -2)
+ButtonNext = Button(HorizontalArrangement1, Text = 'Next', Width = -2)
+LabelCorrect = Label(Screen1)
+
+initialize questionList = ["Which president implemented the 'New Deal' during the great depression?", 'Which president granted China formal recognition in 1979?', 'Which president resigned due to the Watergate scandal?']
+
+initialize answerList = ['Roosevelt', 'Carter', 'Nixon']
+
+initialize index = 1
+
+initialize imageList = ['roosChurch.gif', 'carterChina.gif', 'nixon.gif']
+
+when Screen1.Initialize():
+  set LabelQuestion.Text = lists_select_item(global questionList, 1)
+
+when ButtonNext.Click():
+  set global index = global index + 1
+  if global index > lists_length(global questionList):
+    set global index = 1
+  set ImageQuestion.Picture = lists_select_item(global imageList, global index)
+  set LabelQuestion.Text = lists_select_item(global questionList, global index)
+
+when ButtonAnswer.Click():
+  if text_upcase(lists_select_item(global answerList, global index)) == text_upcase(TextBox1.Text):
+    set LabelCorrect.Text = "Great, you're awesome!"
+  else:
+    set LabelCorrect.Text = 'Incorrect, sorry.'
+STOP
+
