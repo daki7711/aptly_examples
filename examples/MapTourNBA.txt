@@ -1,0 +1,23 @@
+Create and app that shows a list of Arenas that host the NBA. When the user selects a place it shows where the arena is in google map
+
+START
+Screen1 = Screen(AppName = 'MapTourMediaOnly', BackgroundColor = '&HFF000000', Scrollable = True, Title = 'Map Tour')
+VerticalArrangement1 = VerticalArrangement(Screen1, AlignHorizontal = 3, Width = -2)
+Image1 = Image(VerticalArrangement1, Height = -2, Width = -2, Picture = 'FinalsNba.jpg')
+Image2 = Image(VerticalArrangement1, Height = -2, Width = -2, Picture = '052815NBAFinals.jpg')
+HorizontalArrangement1 = HorizontalArrangement(VerticalArrangement1, Height = -2, Width = -2)
+Image3 = Image(HorizontalArrangement1, Height = -2, Width = -2, Picture = 'images(1).jpg')
+Image4 = Image(HorizontalArrangement1, Height = -2, Width = -2, Picture = 'download.jpg')
+ListPicker1 = ListPicker(Screen1, FontSize = 18, Width = -2, Text = 'Choose Destination', TextColor = '&HFFFF0000')
+ActivityStarter1 = ActivityStarter(Screen1, Action = 'android.intent.action.VIEW', ActivityClass = 'com.google.android.maps.MapsActivity', ActivityPackage = 'com.google.android.apps.maps')
+
+initialize destinations = ['Oracle Arena', 'Quicken Loans Arena', 'American Airlines Arena', 'Bankers Life Fieldhouse', 'United Center', 'The Palace of Auburn Hills']
+
+when Screen1.Initialize():
+  set ListPicker1.Elements = global destinations
+
+when ListPicker1.AfterPicking():
+  set ActivityStarter1.DataUri = text_join('geo:0,0?q=', ListPicker1.Selection)
+  call ActivityStarter1.StartActivity()
+STOP
+
