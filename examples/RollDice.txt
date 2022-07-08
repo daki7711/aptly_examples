@@ -1,0 +1,13 @@
+Create an app where you can roll the dice by using the accelerometer sensor
+
+START
+Screen1 = Screen(Title = 'Acceleration', Scrollable = True)
+imgDice = Image(Screen1, Picture = 'face6.png')
+AccelerometerSensor1 = AccelerometerSensor(Screen1)
+
+initialize faceNumber = 0
+
+when AccelerometerSensor1.Shaking():
+  set global faceNumber = math_random_int(1, 6)
+  set imgDice.Picture = text_join('face', global faceNumber, '.png')
+STOP
