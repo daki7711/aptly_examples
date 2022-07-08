@@ -1,0 +1,20 @@
+Create an app that calculates the factorial
+
+START
+Screen1 = Screen(AppName = 'App_10431519_Ch4_1_2', Title = 'Factorial')
+Label1 = Label(Screen1, Text = '請輸入N之值：')
+TextBox1 = TextBox(Screen1)
+Button1 = Button(Screen1, Text = '階層')
+Label2 = Label(Screen1)
+
+initialize N = 0
+
+initialize Factorial = 1
+
+when Button1.Click():
+  set global N = TextBox1.Text
+  for number from 1 to global N:
+    set global Factorial = global Factorial * number
+  set Label2.Text = text_join('The Factorial is：', global Factorial)
+STOP
+
