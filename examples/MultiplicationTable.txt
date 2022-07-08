@@ -1,0 +1,18 @@
+Create an app where if a user inputs a number it prints out all the multiplication table for that number
+
+START
+Screen1 = Screen(AppName = 'Multiplicationapp', Scrollable = True, Title = 'Multiplication Table Generator')
+InstructionLabel = Label(Screen1, Text = 'Which multiplication table would you like to create?')
+FactorTextbox = TextBox(Screen1)
+Generatebutton = Button(Screen1, Text = 'Generate Table')
+Resultlabel = Label(Screen1)
+
+initialize UserFactor = 0
+
+when Generatebutton.Click():
+  set global UserFactor = FactorTextbox.Text
+  set Resultlabel.Text = None
+  for Loopcounter from 1 to 12:
+    set Resultlabel.Text = text_join(Resultlabel.Text, Loopcounter, 'X', global UserFactor, '=', Loopcounter * global UserFactor, '\\n')
+STOP
+
