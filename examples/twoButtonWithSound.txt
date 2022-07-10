@@ -1,0 +1,25 @@
+Create an app where there is an image of a cow and a pig. When the user clicks one of the button it makes the animal's sound
+
+START
+Screen1 = Screen(Title = 'Screen1', Scrollable = True)
+VerticalArrangement1 = VerticalArrangement(Screen1, AlignHorizontal = 3, Width = -2)
+Button1 = Button(VerticalArrangement1, Image = 'cow.jpeg')
+Label1 = Label(VerticalArrangement1, Text = '^^^ Click the Animal ^^^', HasMargins = False)
+Sound1 = Sound(Screen1, Source = 'moo.mp3')
+Player1 = Player(Screen1, Source = 'moo.mp3')
+
+initialize animal_images = ['pig.jpeg', 'cow.jpeg']
+
+initialize animal_noises = ['oink.mp3', 'moo.mp3']
+
+initialize index = 1
+
+when Button1.Click():
+  call Player1.Start()
+
+when Player1.Completed():
+  set global index = math_random_int(1, 2)
+  set Button1.Image = lists_select_item(global animal_images, global index)
+  set Player1.Source = lists_select_item(global animal_noises, global index)
+STOP
+
