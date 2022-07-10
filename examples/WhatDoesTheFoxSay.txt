@@ -1,0 +1,31 @@
+Create an app with four buttons of a dog, horse, cat and a duck. When the user clicks one of the button it shows the animal's cry in the textbox and sounds it
+
+START
+Screen1 = Screen(AppName = 'Whatdoesthefoxsay', BackgroundColor = '&HFF000000', Title = 'Screen1')
+TableArrangement1 = TableArrangement(Screen1)
+btnDog = Button(TableArrangement1, Column = 1, Height = 150, Width = 150, Image = 'Cow.jpg', Row = 0)
+btnHorse = Button(TableArrangement1, BackgroundColor = '&HFF000000', Column = 1, Height = 150, Width = 150, Image = 'Horse.jpg', Row = 1)
+btnCat = Button(TableArrangement1, Column = 0, Height = 150, Width = 150, Image = 'Cat.jpg', Row = 1)
+btnDuck = Button(TableArrangement1, Column = 0, Height = 150, Width = 150, Image = 'Duck.jpg', Row = 0)
+Label1 = Label(Screen1, BackgroundColor = '&HFFFF0000', FontBold = True, FontSize = 20, Height = 30, Width = -2, Text = 'What Does it Say?', TextAlignment = 1)
+SoundCat = Sound(Screen1, Source = 'Catsound.mp3')
+SoundDog = Sound(Screen1, Source = 'Cowsound.mp3')
+SoundDuck = Sound(Screen1, Source = 'Ducksound.mp3')
+SoundHorse = Sound(Screen1, Source = 'Horsesound.mp3')
+
+when btnDog.Click():
+  call SoundDog.Play()
+  set Label1.Text = 'Mooo'
+
+when btnHorse.Click():
+  call SoundHorse.Play()
+  set Label1.Text = 'Nae'
+
+when btnCat.Click():
+  call SoundCat.Play()
+  set Label1.Text = 'Meow'
+
+when btnDuck.Click():
+  call SoundDuck.Play()
+  set Label1.Text = 'Quack'
+STOP
