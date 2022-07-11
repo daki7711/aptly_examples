@@ -1,0 +1,26 @@
+Create an app that converts the score into a letter grade. 
+
+START
+Screen1 = Screen(AppName = 'IfThenElse3', Title = 'Screen1')
+TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1')
+Button1 = Button(Screen1, Text = 'Text for Button1')
+Notifier1 = Notifier(Screen1)
+
+when Button1.Click():
+  if TextBox1.Text < 0:
+    call Notifier1.ShowAlert('The number must greater than 0')
+  else:
+    if TextBox1.Text > 100:
+      call Notifier1.ShowAlert('The number must smaller than 100')
+    else:
+      if TextBox1.Text < 60:
+        call Notifier1.ShowAlert('Fail')
+      else:
+        if TextBox1.Text < 70:
+          call Notifier1.ShowAlert('C')
+        else:
+          if TextBox1.Text > 69 and TextBox1.Text < 80:
+            call Notifier1.ShowAlert('B')
+          else:
+            call Notifier1.ShowAlert('A')
+STOP
