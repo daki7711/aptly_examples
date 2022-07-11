@@ -1,0 +1,9 @@
+An app where the user can draw a circle
+
+START
+Screen1 = Screen(AppName = 'Canvasdemonstration', BackgroundColor = '&HFF0000FF', Title = 'Screen1')
+Canvas1 = Canvas(Screen1, Height = 200, Width = 200)
+
+when Canvas1.Touched():
+  call Canvas1.DrawCircle(x, y, 7, True)
+STOP
