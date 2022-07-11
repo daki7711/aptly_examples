@@ -1,0 +1,42 @@
+Create an app where the user controls a spaceship, when the user fires a bullet will go out and if it hits an object the user will gain points
+
+START
+Screen1 = Screen(AppName = 'SpaceShips', Title = 'Screen1')
+Canvas1 = Canvas(Screen1, BackgroundColor = '&HFF000000', Height = -2, Width = -2)
+saucer = ImageSprite(Canvas1, Interval = 0, Picture = 'saucer.png', X = 208, Y = -17)
+Rocket = ImageSprite(Canvas1, Interval = 5, Picture = 'rocket.png', X = 230, Y = 331)
+Bullet = Ball(Canvas1, PaintColor = '&HFF00FF00', X = 234, Y = 332)
+HorizontalArrangement1 = HorizontalArrangement(Screen1, AlignHorizontal = 3, AlignVertical = 3, Height = 40, Width = -2)
+Reset = Button(HorizontalArrangement1, Width = -2, Text = 'Reset')
+label1 = Label(HorizontalArrangement1, Height = -2, Width = -2, Text = 'Score: ', TextAlignment = 2)
+score = Label(HorizontalArrangement1, Height = 40, Width = -2, TextAlignment = 1)
+Clock1 = Clock(Screen1)
+
+initialize score = 0
+
+when Screen1.Initialize():
+  set Bullet.Visible = False
+
+when Rocket.Touched():
+  call Bullet.MoveTo(Rocket.X + Rocket.Width / 2, Rocket.Y - 20)
+  set Bullet.Visible = True
+  set Bullet.Speed = 10
+  set Bullet.Heading = 90
+
+when Rocket.Dragged():
+  set Rocket.X = currentX
+
+when Bullet.CollidedWith():
+  set Bullet.Visible = False
+  set score.Text = global score + 1
+  set saucer.X = math_random_int(0, (Canvas1.Width - saucer.Width))
+
+when Reset.Click():
+  set score.Text = 0
+
+when Bullet.EdgeReached():
+  set Bullet.Visible = False
+
+when Clock1.Timer():
+  set saucer.X = math_random_int(0, (Canvas1.Width - saucer.Width))
+STOP
