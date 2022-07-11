@@ -1,0 +1,21 @@
+Make an app where you write something in the textbox. If you click the first button it translate it to English, if you click the second button it translate it to Russian
+
+START
+Screen1 = Screen(AlignHorizontal = 3, Title = 'Screen1')
+TextBox1 = TextBox(Screen1, FontSize = 25, TextAlignment = 1, Width = -2)
+Button1 = Button(Screen1, FontSize = 25, Text = '   Translate   ')
+Label1 = Label(Screen1, FontSize = 25, Text = 'Text for Label1', HasMargins = False)
+Label2 = Label(Screen1, FontSize = 25, Text = 'Text for Label2', HasMargins = False)
+YandexTranslate1 = YandexTranslate(Screen1)
+YandexTranslate2 = YandexTranslate(Screen1)
+
+when Button1.Click():
+  call YandexTranslate1.RequestTranslation('ms-en', TextBox1.Text)
+  call YandexTranslate2.RequestTranslation('ms-ru', TextBox1.Text)
+
+when YandexTranslate1.GotTranslation():
+  set Label1.Text = translation
+
+when YandexTranslate2.GotTranslation():
+  set Label2.Text = translation
+STOP
