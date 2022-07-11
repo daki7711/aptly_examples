@@ -1,0 +1,11 @@
+Make an app that speaks what the user wrote in the textbox
+
+START
+Screen1 = Screen(AppName = 'proj116', Title = 'Screen1')
+Button1 = Button(Screen1, Text = 'button')
+TextToSpeech1 = TextToSpeech(Screen1)
+
+when Button1.Click():
+  call TextToSpeech1.Speak('널사랑해')
+STOP
+
