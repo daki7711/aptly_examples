@@ -1,0 +1,14 @@
+Create an app where you can draw a line
+
+START
+Screen1 = Screen(AppName = 'Zeichnen', Title = 'Screen1')
+Canvas1 = Canvas(Screen1, Height = -2, Width = -2)
+Button1 = Button(Screen1, Text = 'Löschen')
+
+when Canvas1.Dragged():
+  call Canvas1.DrawLine(prevX, prevY, currentX, currentY)
+
+when Button1.Click():
+  call Canvas1.Clear()
+STOP
+
