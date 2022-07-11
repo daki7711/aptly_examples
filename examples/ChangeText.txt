@@ -1,0 +1,35 @@
+Create and app, where you can change the fontsize or background color by pressing different buttons 
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AlignVertical = 3, AppName = 'App2', Title = 'Screen1')
+SaludarSM = Button(Screen1, Text = 'Saludo')
+Label1 = Label(Screen1)
+ButBMns = Button(Screen1, Text = 'Borrar mensaje')
+ButRojo = Button(Screen1, Text = 'Cambiar fondo a Rojo')
+ButVerde = Button(Screen1, Text = 'Cambiar fondo a Verde')
+ButAzul = Button(Screen1, Text = 'Cambiar fondo a Azul')
+ButCTam = Button(Screen1, Text = 'Cambiar tamaño de letra')
+ButResLetra = Button(Screen1, Text = 'Rest. tamaño de la letra')
+
+when SaludarSM.Click():
+  set Label1.Text = 'Hola Simple Mortal!'
+
+when ButCTam.Click():
+  set Label1.FontSize = Label1.Height + 1
+
+when ButBMns.Click():
+  set Label1.Text = None
+
+when ButResLetra.Click():
+  set Label1.FontSize = 14
+
+when ButRojo.Click():
+  set Screen1.BackgroundColor = Color(#ff0000)
+
+when ButAzul.Click():
+  set Screen1.BackgroundColor = Color(#0000ff)
+
+when ButVerde.Click():
+  set Screen1.BackgroundColor = Color(#00ff00)
+STOP
+
