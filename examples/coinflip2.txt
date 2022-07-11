@@ -1,0 +1,16 @@
+Create an app the user can flip a coin, the probability of heads and tails is the same
+
+START
+Screen1 = Screen(AlignHorizontal = 3, ScreenOrientation = 'portrait', Scrollable = True, Title = 'Coin Flip')
+ButtonFlipCoin = Button(Screen1, FontBold = True, FontSize = 16, Text = 'Flip the Coin', Width = -2, Height = -2)
+Image1 = Image(Screen1, Picture = 'heads.jpg')
+
+initialize Coin = 1
+
+when ButtonFlipCoin.Click():
+  set global Coin = math_random_int(1, 2)
+  if global Coin == 1:
+    set Image1.Picture = 'heads.jpg'
+  else:
+    set Image1.Picture = 'tails.jpg'
+STOP
