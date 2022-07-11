@@ -1,0 +1,42 @@
+Create an app where you can do different things, such as taking a picture, changing the canvas color, and drawing a line
+
+START
+Screen1 = Screen(AppName = 'PaintPotMediaOnly', Scrollable = True, Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1, Width = -2)
+RedButton = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Width = -2, Text = 'Red')
+BlueButton = Button(HorizontalArrangement1, BackgroundColor = '&HFF0000FF', Width = -2, Text = 'Blue')
+GreenButton = Button(HorizontalArrangement1, BackgroundColor = '&HFF00FF00', Width = -2, Text = 'Green')
+YellowButton = Button(HorizontalArrangement1, BackgroundColor = '&HFFFFFF00', Width = -2, Text = 'Yellow')
+Canvas1 = Canvas(Screen1, BackgroundImage = 'Penguins.jpg', Height = -1050, Width = -1096)
+CameraButton = Button(Screen1, Text = 'camera button')
+WipeButton = Button(Screen1, Text = 'WipeButton')
+Camera1 = Camera(Screen1)
+
+when CameraButton.Click():
+  call Camera1.TakePicture()
+
+when Camera1.AfterPicture():
+  set Canvas1.BackgroundColor = image
+
+when RedButton.Click():
+  set Canvas1.PaintColor = Color(#ff0000)
+
+when GreenButton.Click():
+  set Canvas1.PaintColor = Color(#00ff00)
+
+when Canvas1.Touched():
+  call Canvas1.DrawCircle(x, y, 8, True)
+
+when WipeButton.Click():
+  call Canvas1.Clear()
+
+when BlueButton.Click():
+  set Canvas1.PaintColor = Color(#0000ff)
+
+when YellowButton.Click():
+  set Canvas1.PaintColor = Color(#ffff00)
+
+when Canvas1.Dragged():
+  call Canvas1.DrawLine(startX, startY, currentX, currentY)
+STOP
+
