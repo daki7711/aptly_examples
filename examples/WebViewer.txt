@@ -1,0 +1,21 @@
+Create an app where you start in a certain webpage and you can go back and forth
+
+START
+Screen1 = Screen(Title = '메인')
+VerticalArrangement1 = VerticalArrangement(Screen1, Width = -2, Height = -2)
+WebViewer1 = WebViewer(VerticalArrangement1)
+HorizontalArrangement1 = HorizontalArrangement(VerticalArrangement1, Width = -2)
+backbutton = Button(HorizontalArrangement1, Text = '뒤로')
+homebutton = Button(HorizontalArrangement1, Text = '메인페이지로', Width = 190)
+forwardbutton = Button(HorizontalArrangement1, Text = '앞으로')
+
+when homebutton.Click():
+  call WebViewer1.GoToUrl('http://61.84.221.150/~jinisoft')
+
+when backbutton.Click():
+  call WebViewer1.GoBack()
+
+when forwardbutton.Click():
+  call WebViewer1.GoForward()
+STOP
+
