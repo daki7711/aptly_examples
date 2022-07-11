@@ -1,0 +1,39 @@
+Create a list of math questions, it goes around all of the questions one by one and the user types in the answer, if the user is correct it prints out "RIGHT!!" otherwise "WRONG!!"
+
+START
+Screen1 = Screen(Title = 'Screen1')
+Image1 = Image(Screen1, Picture = 'math.jpg', Width = -2, Height = 250)
+Question = Label(Screen1)
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+answer = TextBox(HorizontalArrangement1, Hint = 'Hint for TextBox1')
+Submit = Button(HorizontalArrangement1, Text = 'Submit')
+rightorwrong = Label(Screen1)
+next = Button(Screen1, Text = 'Next')
+
+initialize questionlist = ['5*12', '10*7', '10/40', '100+35', '45-20', '25*4', '81/9', '66+3', '99+1', '34+5']
+
+initialize answerlist = ['60', '70', '4', '135', '25', '100', '9', '69', '100', '39']
+
+initialize picturelist = ['math.jpg', 'math2.gif', 'Math3.jpg', 'math4.jpg', 'math5.gif', 'Math6.png', 'math7.jpg', 'math8.gif', 'math9.jpg', 'math10.jpg']
+
+initialize current?index = 1
+
+when Screen1.Initialize():
+  set Question.Text = lists_select_item(global questionlist, 1)
+
+when next.Click():
+  set answer.Text = None
+  set rightorwrong.Text = None
+  set global current?index = global current?index + 1
+  if global current?index > lists_length(global questionlist):
+    set global current?index = 1
+  set Question.Text = lists_select_item(global questionlist, global current?index)
+  set Image1.Picture = lists_select_item(global picturelist, global current?index)
+
+when Submit.Click():
+  if answer.Text == lists_select_item(global answerlist, global current?index):
+    set rightorwrong.Text = 'RIGHT!!'
+  else:
+    set rightorwrong.Text = 'WRONG!!'
+STOP
+
