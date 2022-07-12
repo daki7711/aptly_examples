@@ -1,0 +1,17 @@
+Create an app that calculates your BMI
+
+START
+Screen1 = Screen(AppName = 'ex_BMI', Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Label1 = Label(HorizontalArrangement1, Text = 'Weight：')
+TextBox1 = TextBox(HorizontalArrangement1, Hint = 'Hint for TextBox1')
+HorizontalArrangement2 = HorizontalArrangement(Screen1)
+Label2 = Label(HorizontalArrangement2, Text = 'Height：')
+TextBox2 = TextBox(HorizontalArrangement2, Hint = 'Hint for TextBox2')
+Button1 = Button(Screen1, Text = 'Text for Button1')
+Label3 = Label(Screen1)
+
+when Button1.Click():
+  set Label3.Text = text_join('BMI：', TextBox2.Text / TextBox1.Text / 100 * TextBox1.Text / 100)
+STOP
+
