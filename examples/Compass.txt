@@ -1,0 +1,17 @@
+Create an app that shows the orientation
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'compassSexton', ScreenOrientation = 'portrait', Title = 'Compass')
+headinglabel = Label(Screen1, FontBold = True, FontSize = 28, Text = 'Heading')
+Canvas1 = Canvas(Screen1, Height = -2, Width = -2)
+ImageSprite1 = ImageSprite(Canvas1, Picture = 'compass_face.png', X = 34, Y = 57)
+OrientationSensor1 = OrientationSensor(Screen1)
+
+when Screen1.Initialize():
+  set ImageSprite1.Height = Canvas1.Width
+  set ImageSprite1.Width = Canvas1.Width
+
+when OrientationSensor1.OrientationChanged():
+  set headinglabel.Text = text_join('Heading:', math_round(OrientationSensor1.Azimuth), ' degrees')
+  set ImageSprite1.Heading = math_round(OrientationSensor1.Azimuth)
+STOP
