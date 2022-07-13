@@ -1,0 +1,33 @@
+Create an app where the user clicks a button and the corresponding cat comes out and cries
+
+START
+Screen1 = Screen(AlignHorizontal = 3, BackgroundColor = '&HFFCCCCCC', Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+CAT1 = Button(HorizontalArrangement1, Text = 'CAT_A')
+CAT2 = Button(HorizontalArrangement1, Text = 'CAT_B')
+CAT3 = Button(HorizontalArrangement1, Text = 'CATC')
+Image1 = Image(Screen1, Picture = 'CAT.jpg', Visible = False)
+Image2 = Image(Screen1, Picture = 'Untitled.png', Visible = False)
+Image3 = Image(Screen1, Picture = 'index.jpg', Visible = False)
+Sound1 = Sound(Screen1, Source = 'cat1.wav')
+Sound2 = Sound(Screen1, Source = 'cat2.wav')
+Sound3 = Sound(Screen1, Source = 'cat4.wav')
+
+when CAT1.Click():
+  set Image1.Visible = True
+  set Image2.Visible = False
+  set Image3.Visible = False
+  call Sound1.Play()
+
+when CAT2.Click():
+  set Image1.Visible = False
+  set Image2.Visible = True
+  set Image3.Visible = False
+  call Sound2.Play()
+
+when CAT3.Click():
+  set Image1.Visible = False
+  set Image2.Visible = False
+  set Image3.Visible = True
+  call Sound3.Play()
+STOP
