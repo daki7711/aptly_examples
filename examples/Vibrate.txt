@@ -1,0 +1,22 @@
+Make an app that vibrates if the button is clicked, the device is shaken, or it hears a sound
+
+START
+Screen1 = Screen(AppName = 'gatogrrr', Title = 'Screen1')
+Button1 = Button(Screen1, Image = 'kitty.png', Width = -2, Height = 300)
+Label1 = Label(Screen1, Text = 'escucha el gato')
+Sound1 = Sound(Screen1, Source = 'AUD-20150120-WA0007.mp3')
+NxtSoundSensor1 = NxtSoundSensor(Screen1)
+AccelerometerSensor1 = AccelerometerSensor(Screen1)
+
+when Button1.Click():
+  call Sound1.Play()
+  call Sound1.Vibrate(200)
+
+when AccelerometerSensor1.Shaking():
+  call Sound1.Play()
+  call Sound1.Vibrate(200)
+
+when NxtSoundSensor1.AboveRange():
+  call Sound1.Play()
+  call Sound1.Vibrate(200)
+STOP
