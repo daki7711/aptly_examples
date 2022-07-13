@@ -1,0 +1,10 @@
+Make an app where you press a button and it shows the text "Hello World!"
+
+START
+Screen1 = Screen(Title = 'Screen1')
+Label1 = Label(Screen1, Text = 'Text for Label1')
+Button1 = Button(Screen1, Text = 'Tap me!')
+
+when Button1.Click():
+  set Label1.Text = 'Hello World!'
+STOP
