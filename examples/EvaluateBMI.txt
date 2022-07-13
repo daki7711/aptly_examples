@@ -1,0 +1,62 @@
+Create an app that calculates your BMI and then evaluate it
+
+START
+Screen1 = Screen(AppName = 'calculate', Title = 'Screen1')
+Label1 = Label(Screen1, FontBold = True, FontSize = 20, Text = 'Calculate my BMI')
+height = TextBox(Screen1, Hint = 'enter your height')
+Label2 = Label(Screen1, Text = 'height must be in centimeteres')
+weight = TextBox(Screen1, Hint = 'Hint for TextBox1')
+Label3 = Label(Screen1, Text = 'weight must be in kgs')
+calculate = Button(Screen1, Text = 'calculate BMI')
+Label4 = Label(Screen1, Text = 'your BMi is  as below')
+BMI_in_number_format = Label(Screen1)
+messege = Label(Screen1, Text = 'text for Label6')
+try_again = Button(Screen1, Text = 'try again')
+
+initialize height = 0
+
+initialize weight = 0
+
+initialize temp = 0
+
+initialize BMI = 0
+
+initialize temp1 = 0
+
+to procedure():
+  set global height = height.Text
+  set global weight = weight.Text
+  set global temp1 = height.Text * height.Text
+  set global temp = global weight / global temp1
+  set global BMI = math_format_as_decimal(global temp * 10000, 2)
+  if global BMI < 18.5:
+    set BMI_in_number_format.Text = global BMI
+    set messege.Text = 'you are under weight'
+  elif global BMI >= 18.5 == global BMI < 25:
+    set BMI_in_number_format.Text = global BMI
+    set messege.Text = 'you are healthy'
+  elif global BMI >= 25 == global BMI < 30:
+    set BMI_in_number_format.Text = global BMI
+    set messege.Text = 'you are healthy'
+  elif global BMI >= 30 == global BMI < 35:
+    set BMI_in_number_format.Text = global BMI
+    set messege.Text = 'you are little obese'
+  elif global BMI >= 35:
+    set BMI_in_number_format.Text = global BMI
+    set messege.Text = 'you are obese'
+
+when Screen1.Initialize():
+  set try_again.Enabled = False
+
+when calculate.Click():
+  call procedure()
+  set try_again.Enabled = True
+  set calculate.Enabled = False
+
+when try_again.Click():
+  set height.Text = None
+  set weight.Text = None
+  set BMI_in_number_format.Text = None
+  set messege.Text = None
+  set calculate.Enabled = False
+STOP
