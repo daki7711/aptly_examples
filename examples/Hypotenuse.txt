@@ -1,0 +1,16 @@
+Create an app that calculates the hypotenuse
+
+START
+Screen1 = Screen(AppName = 'Drills1_3', ScreenOrientation = 'portrait', Title = 'Screen1')
+LabelBanner = Label(Screen1, FontSize = '24.0', HasMargins = False, Width = -2, Text = 'Drills Part 1', TextAlignment = 1)
+HorizontalArrangement1 = HorizontalArrangement(Screen1, Width = -2)
+TextBox1 = TextBox(HorizontalArrangement1, Width = -2, Hint = 'Type input here', NumbersOnly = True)
+TextBox2 = TextBox(HorizontalArrangement1, Width = -2, Hint = 'Type Quotient here')
+ButtonTestIt = Button(HorizontalArrangement1, Text = 'Test it!')
+LabelOutput = Label(Screen1, HasMargins = False, Height = 300, Width = -2, Text = 'Output shows here')
+
+when ButtonTestIt.Click():
+  set TextBox1.NumbersOnly = True
+  set LabelOutput.Text = text_join('For a text box with the sides of ', TextBox1.Text, ' and ', TextBox2.Text, '  The Hypotenuse is ', math_root(TextBox1.Text ^ 2 + TextBox2.Text ^ 2))
+STOP
+
