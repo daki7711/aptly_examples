@@ -1,0 +1,14 @@
+Make an app which shows a random image
+
+START
+Screen1 = Screen(Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Image1 = Image(HorizontalArrangement1, Picture = '1h.png')
+Button1 = Button(Screen1, Text = 'Click', Width = 350)
+
+initialize n = 0
+
+when Button1.Click():
+  set global n = math_random_int(1, 4)
+  set Image1.Picture = text_join(global n, 'h.png')
+STOP
