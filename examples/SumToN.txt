@@ -1,0 +1,17 @@
+Make an app that sums numbers from 1 to N
+
+START
+Screen1 = Screen(AppName = 'PrintSum', Title = 'Screen1')
+VerticalArrangement1 = VerticalArrangement(Screen1, AlignHorizontal = 3, Width = -2)
+TextBox1 = TextBox(VerticalArrangement1, Hint = 'Hint for TextBox1')
+Button1 = Button(VerticalArrangement1, Text = 'Add 1 to N')
+Label1 = Label(VerticalArrangement1, BackgroundColor = '&HFFFFC800', Width = -2, Text = '합계')
+
+initialize sum = 0
+
+when Button1.Click():
+  for number from 1 to TextBox1.Text:
+    set global sum = global sum + number
+  set Label1.Text = text_join('The Sum from 1 to ', TextBox1.Text, ' is ', global sum)
+STOP
+
