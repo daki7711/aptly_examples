@@ -28,7 +28,7 @@ when PauseButton.Click():
     set Clock1.TimerEnabled = False
 
 when ResetButton.Click():
-    set MillisecondsLabel.Text = 0
+    set HoursLabel.Text = 0
     set SecondsLabel.Text = 0
     set MinutesLabel.Text = 0
 STOP
