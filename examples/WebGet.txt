@@ -1,0 +1,20 @@
+Create an app that opens www.kimo.com.tv
+
+START
+Screen1 = Screen(Title = 'Screen1', Scrollable = True)
+TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1', MultiLine = True, Text = 'http://www.kimo.com.tw', Width = -2)
+Button1 = Button(Screen1, Text = 'Connect to ...')
+Label1 = Label(Screen1, BackgroundColor = '&HFFFFFF00', Text = 'Text for Label1')
+Web1 = Web(Screen1)
+NearField1 = NearField(Screen1)
+Clock1 = Clock(Screen1)
+
+when Button1.Click():
+  set Web1.Url = 'http://www.kimo.com.tw'
+  set TextBox1.Text = 'http://www.kimo.com.tw'
+  call Web1.Get()
+
+when Web1.GotText():
+  set Label1.Text = responseContent
+STOP
+
