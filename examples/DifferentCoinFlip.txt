@@ -1,0 +1,17 @@
+Another way to flip the coin
+
+START
+Screen1 = Screen(AppName = 'CoinFlipMediaOnly', ScreenOrientation = 'portrait', Scrollable = True, Title = 'Coin Flip')
+Button1 = Button(Screen1, Text = 'Flip the Coin', Width = -2)
+Image1 = Image(Screen1, Picture = 'heads.jpg')
+
+initialize coin = 1
+
+when Button1.Click():
+  set global coin = math_random_int(1, 2)
+  if global coin == 1:
+    set Image1.Picture = 'heads.jpg'
+  else:
+    set Image1.Picture = 'tails.jpg'
+STOP
+
