@@ -1,0 +1,29 @@
+Make an app that gets latitude, altitude, and logitude and finds the location in the world map
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'location_BECK', Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Latitude_lb = Label(HorizontalArrangement1, Text = 'latitude: ')
+latitudeoutput_tb = TextBox(HorizontalArrangement1, Hint = 'Hint for TextBox1', Width = 100)
+HorizontalArrangement2 = HorizontalArrangement(Screen1)
+Logitude_lb = Label(HorizontalArrangement2, Text = 'Logitude: ')
+LongitudeOutput_lb = TextBox(HorizontalArrangement2, Hint = 'Hint for TextBox1', Width = 100, Height = 20)
+HorizontalArrangement4 = HorizontalArrangement(Screen1)
+altitude_lb = Label(HorizontalArrangement4, Text = 'Altitude: ')
+AltitudeOutput_tb = TextBox(HorizontalArrangement4, Hint = 'Hint for TextBox2', Width = 100, Height = 20)
+HorizontalArrangement3 = HorizontalArrangement(Screen1)
+Adress_lb = Label(HorizontalArrangement3, Text = 'Adress:')
+AdressOutput_tb = TextBox(HorizontalArrangement3, Hint = 'Hint for TextBox3', Width = 100, Height = 100)
+Exit_bt = Button(Screen1, Text = 'Exit')
+LocationSensor1 = LocationSensor(Screen1)
+
+initialize adress = None
+
+when LocationSensor1.LocationChanged():
+  set latitudeoutput_tb.Text = latitude
+  set AltitudeOutput_tb.Text = longitude
+  set LongitudeOutput_lb.Text = altitude
+  set global adress = LocationSensor1.CurrentAddress
+  set AdressOutput_tb.Text = global adress
+STOP
+
