@@ -1,0 +1,37 @@
+Create a app that checks whether a phone number is valid
+
+START
+Screen1 = Screen(AlignHorizontal = 3, BackgroundColor = '&HFFFF0000', BackgroundImage = 'UAoDLogo.png', Title = 'UA Phone')
+lblSpacer = Label(Screen1, TextColor = '&H00FFFFFF', Width = -2, Height = 120, HasMargins = False)
+varPhone = VerticalArrangement(Screen1, AlignHorizontal = 3, Width = -2)
+txtPhone = TextBox(varPhone, BackgroundColor = '&HFF0000FF', FontBold = True, FontSize = 20, FontTypeface = 1, Hint = 'Enter phone...', NumbersOnly = True, TextAlignment = 1, TextColor = '&HFFFFFFFF', Width = -2)
+lblPadding01 = Label(varPhone, TextColor = '&H00FFFFFF', Width = -2, Height = 5, HasMargins = False)
+harButtons = HorizontalArrangement(varPhone, AlignHorizontal = 3, Width = -2)
+btnCheck = Button(harButtons, BackgroundColor = '&HFFFFFF00', FontBold = True, FontSize = 20, FontTypeface = 1, Shape = 1, Text = 'Check', TextColor = '&HFF0000FF', Width = 100)
+lblPadding02 = Label(harButtons, TextColor = '&H00FFFFFF', Width = 10, HasMargins = False)
+btnClear = Button(harButtons, BackgroundColor = '&HFF00FFFF', FontBold = True, FontSize = 20, FontTypeface = 1, Shape = 1, Text = 'Clear', TextColor = '&HFF0000FF', Width = 100)
+ntfMessages = Notifier(Screen1)
+
+to start():
+  set txtPhone.Enabled = True
+  set txtPhone.Text = None
+  set btnCheck.Enabled = True
+  set btnClear.Enabled = True
+
+when Screen1.Initialize():
+  call start()
+
+when btnCheck.Click():
+  if text_isEmpty(txtPhone.Text):
+    call ntfMessages.ShowAlert('Please type in a phone number.')
+  elif text_length(txtPhone.Text) != 10:
+    call ntfMessages.ShowAlert('Not a valid phone number.')
+  elif text_starts_at(txtPhone.Text, '469232') != 1:
+    call ntfMessages.ShowAlert('Not an Ursuline phone number.')
+  else:
+    call ntfMessages.ShowAlert('Valid Ursuline phone number!')
+
+when btnClear.Click():
+  call start()
+STOP
+
