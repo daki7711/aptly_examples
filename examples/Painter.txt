@@ -1,0 +1,29 @@
+Create an app that paints the canvas in various ways and saves it
+
+START
+Screen1 = Screen(AppName = 'Painter', Title = 'Painter')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+button_Save = Button(HorizontalArrangement1, Text = 'Save')
+button_Clear = Button(HorizontalArrangement1, Text = 'Clear')
+Canvas1 = Canvas(Screen1, Width = -2, Height = 300)
+Label1 = Label(Screen1)
+Label2 = Label(Screen1)
+
+initialize startX = 0
+
+initialize startY = 0
+
+when Canvas1.TouchDown():
+  set global startX = x
+  set global startY = y
+
+when Canvas1.TouchUp():
+  call Canvas1.DrawCircle((global startX + x) / 2, (global startY + y) / 2, math_root(((global startX - x) ^ 2 + (global startY - y) ^ 2) / 2), False)
+
+when button_Clear.Click():
+  call Canvas1.Clear()
+
+when button_Save.Click():
+  set Label1.Text = call Canvas1.Save()
+STOP
+
