@@ -1,0 +1,29 @@
+Make an app that calculates the total bill based on the percentage increase
+
+START
+Screen1 = Screen(Title = 'Screen1')
+Label1 = Label(Screen1, Text = 'Bill Amount.')
+TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1', NumbersOnly = True)
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Ten = Button(HorizontalArrangement1, Text = '10%')
+Fifteen = Button(HorizontalArrangement1, Text = '15%')
+twenty = Button(HorizontalArrangement1, Text = '20%')
+Label2 = Label(Screen1, Text = 'Tip Amount')
+TextBox2 = TextBox(Screen1, Hint = 'Hint for TextBox2', NumbersOnly = True)
+Label3 = Label(Screen1, Text = 'Total Bill')
+TextBox3 = TextBox(Screen1, Hint = 'Hint for TextBox3', NumbersOnly = True)
+Slider1 = Slider(Screen1, Width = -2)
+
+when Ten.Click():
+  set TextBox2.Text = TextBox1.Text * 0.1
+  set TextBox3.Text = TextBox1.Text + TextBox2.Text
+
+when Fifteen.Click():
+  set TextBox2.Text = TextBox1.Text * 0.15
+  set TextBox3.Text = TextBox1.Text + TextBox2.Text
+
+when twenty.Click():
+  set TextBox2.Text = TextBox1.Text * 0.2
+  set TextBox3.Text = TextBox1.Text + TextBox2.Text
+STOP
+
