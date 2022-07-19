@@ -1,0 +1,22 @@
+Create an app where you can create an image by taking a picture, then the user can use the imagepicker to pick the best picture
+
+START
+Screen1 = Screen(Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Button1 = Button(HorizontalArrangement1, Text = '촬형')
+ImagePicker1 = ImagePicker(HorizontalArrangement1, Text = 'pick image')
+Image1 = Image(Screen1, Width = -2, Height = 400)
+Label1 = Label(Screen1, Text = '이미지 정보 보여주기', HasMargins = False)
+Camera1 = Camera(Screen1)
+
+when Button1.Click():
+  call Camera1.TakePicture()
+
+when Camera1.AfterPicture():
+  set Image1.Picture = image
+
+when ImagePicker1.AfterPicking():
+  set Image1.Picture = ImagePicker1.Selection
+  set Image1.Picture = ImagePicker1.Visible
+STOP
+
