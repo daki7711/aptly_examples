@@ -1,0 +1,11 @@
+Create an app that plays a video
+
+START
+Screen1 = Screen(Title = 'Screen1')
+Button1 = Button(Screen1, BackgroundColor = '&HFFFFC800', FontBold = True, FontItalic = True, FontSize = 20, FontTypeface = 2, Shape = 1, Text = 'Acción 1', TextColor = '&HFF888888')
+VideoPlayer1 = VideoPlayer(Screen1, Source = 'Comofuncionanlascomputadoras.flv')
+
+when Button1.Click():
+  call VideoPlayer1.Start()
+STOP
+
