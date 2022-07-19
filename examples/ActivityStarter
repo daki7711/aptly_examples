@@ -1,0 +1,11 @@
+Make an app that uses the ActivityStarter
+
+START
+Screen1 = Screen(BackgroundColor = '&HFFFFC800', Title = 'Screen1')
+Button1 = Button(Screen1, BackgroundColor = '&HFFCCCCCC', Text = 'Text for Button1')
+ActivityStarter1 = ActivityStarter(Screen1, Action = 'android.intent.action.VIEW', DataUri = 'geo:19.986295,-102.710475')
+
+when Button1.Click():
+  call ActivityStarter1.StartActivity()
+STOP
+
