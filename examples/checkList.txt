@@ -1,0 +1,25 @@
+Make an app where the user can add items in a list and also check if an item is in the list
+
+START
+Screen1 = Screen(AppName = 'midterm_part_2', Title = 'Screen1')
+TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1')
+Label1 = Label(Screen1)
+HorizontalArrangement1 = HorizontalArrangement(Screen1, BackgroundColor = '&H00FFFFFF')
+add = Button(HorizontalArrangement1, Text = 'Add')
+check = Button(HorizontalArrangement1, Text = 'Check')
+
+initialize list = ['a', 'b']
+
+when add.Click():
+  lists_add_items(global list, TextBox1.Text)
+  set Label1.Text = 'Item added'
+  set TextBox1.Text = None
+
+when check.Click():
+  if lists_is_in(TextBox1.Text, global list):
+    set Label1.Text = text_join(TextBox1.Text, ' is in the list')
+  else:
+    set Label1.Text = text_join(TextBox1.Text, ' is not in the list')
+  set TextBox1.Text = None
+STOP
+
