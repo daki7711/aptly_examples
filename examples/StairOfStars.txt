@@ -1,0 +1,16 @@
+Create an app that prints out a stair of stars
+
+START
+Screen1 = Screen(AppName = 'uhibjksui', Title = '印星星程式')
+Label1 = Label(Screen1, Text = '輸入星星列數')
+TextBox1 = TextBox(Screen1, Hint = 'Hint for TextBox1')
+Button1 = Button(Screen1, Text = '印出星星')
+TextBox2 = TextBox(Screen1, Height = -2, Hint = 'Hint for TextBox2', MultiLine = True)
+
+when Button1.Click():
+  for i from 1 to TextBox1.Text:
+    for j from 1 to i:
+      set TextBox2.Text = text_join(TextBox2.Text, '*')
+    set TextBox2.Text = text_join(TextBox2.Text, '\\n')
+STOP
+
