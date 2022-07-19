@@ -1,0 +1,13 @@
+Create an app that gets a person's name from the user and outputs hello whoever
+
+START
+Screen1 = Screen(Title = 'Screen1')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Label2 = Label(HorizontalArrangement1, Text = 'Please enter your name：')
+TextBox1 = TextBox(HorizontalArrangement1, Hint = 'Hint for TextBox1')
+Button1 = Button(Screen1, Text = 'Hello', TextColor = '&HFF0000FF')
+Label1 = Label(Screen1)
+
+when Button1.Click():
+  set Label1.Text = text_join('hello,', TextBox1.Text)
+STOP
