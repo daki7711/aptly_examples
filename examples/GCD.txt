@@ -1,0 +1,27 @@
+Make an app that finds the greatest common divisor
+
+START
+Screen1 = Screen(Title = 'Screen1')
+Button1 = Button(Screen1, Text = 'Text for Button1')
+Label1 = Label(Screen1)
+
+initialize a = 1
+
+initialize b = 0
+
+initialize c = 0
+
+initialize d = 0
+
+when Button1.Click():
+  while global a <= 100:
+    if math_divide_remainder(global a, 5) == 0 or math_divide_remainder(global a, 7) == 0:
+      set global b = global a + global b
+      set global a = global a + 1
+  while global a <= 100:
+    if math_divide_remainder(global a, 35) == 0:
+      set global c = global b - global a
+      set global a = global a + 1
+  set Label1.Text = global c
+STOP
+
