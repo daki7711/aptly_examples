@@ -1,0 +1,29 @@
+Make an app where the user can control the monkey image
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'monkey', Title = 'Screen1')
+Canvas1 = Canvas(Screen1, Height = 300, Width = 320)
+ImageSprite1 = ImageSprite(Canvas1, Height = 60, Width = 60, Picture = '1049978_0.gif', X = 90, Y = 84)
+Button3up = Button(Screen1, BackgroundColor = '&HFFFFFF00', FontBold = True, FontSize = 16, Text = '위쪽')
+HorizontalArrangement1 = HorizontalArrangement(Screen1)
+Button1left = Button(HorizontalArrangement1, BackgroundColor = '&HFF0000FF', FontBold = True, FontSize = 16, Text = '왼쪽', TextColor = '&HFFFFFFFF')
+Button2right = Button(HorizontalArrangement1, BackgroundColor = '&HFF0000FF', FontBold = True, FontSize = 16, Text = '오른쪽', TextColor = '&HFFFFFFFF')
+Button4down = Button(Screen1, BackgroundColor = '&HFFFFFF00', FontBold = True, FontSize = 16, Text = '아래쪽')
+
+when Button1left.Click():
+  set ImageSprite1.X = ImageSprite1.X - 5
+
+when Button3up.Click():
+  set ImageSprite1.Y = ImageSprite1.Y - 5
+
+when Button2right.Click():
+  set ImageSprite1.X = ImageSprite1.X + 5
+
+when Button4down.Click():
+  set ImageSprite1.Y = ImageSprite1.Y + 5
+
+when ImageSprite1.Dragged():
+  set ImageSprite1.X = currentX
+  set ImageSprite1.Y = currentY
+STOP
+
