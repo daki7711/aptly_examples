@@ -1,0 +1,69 @@
+Create an app that can control a robot using bluetooth
+
+START
+Screen1 = Screen(AlignHorizontal = 3, AppName = 'Robo_Arduino', BackgroundColor = '&HFF000000', Title = 'Screen1')
+lblDispositivo = Label(Screen1, Text = 'Dispositivo: Nenhum', TextColor = '&HFFFFFFFF')
+HorizontalArrangement1 = HorizontalArrangement(Screen1, BackgroundColor = '&H00FFFFFF', Width = -2)
+btmProcurar = ListPicker(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Width = -2, Shape = 1, Text = 'Procurar', TextColor = '&HFFFFFFFF')
+VerticalArrangement1 = VerticalArrangement(HorizontalArrangement1, BackgroundColor = '&H00FFFFFF', Height = 10, Width = 30)
+btmConectar = Button(HorizontalArrangement1, BackgroundColor = '&HFFFF0000', Width = -2, Shape = 1, Text = 'Conectar', TextColor = '&HFFFFFFFF')
+TableArrangement1 = TableArrangement(Screen1, Columns = 3, Rows = 3)
+Front = Button(TableArrangement1, BackgroundColor = '&HFFFF0000', Column = 1, Height = 70, Width = 70, Row = 0, Shape = 1, Text = 'Front', TextColor = '&HFFFFFFFF')
+Left = Button(TableArrangement1, BackgroundColor = '&HFFFF0000', Column = 0, Height = 70, Width = 70, Row = 1, Shape = 1, Text = 'Left', TextColor = '&HFFFFFFFF')
+Right = Button(TableArrangement1, BackgroundColor = '&HFFFF0000', Column = 2, Height = 70, Width = 70, Row = 1, Shape = 1, Text = 'Right', TextColor = '&HFFFFFFFF')
+Back = Button(TableArrangement1, BackgroundColor = '&HFFFF0000', Column = 1, Height = 70, Width = 70, Row = 2, Shape = 1, Text = 'Back', TextColor = '&HFFFFFFFF')
+Lights = Button(TableArrangement1, BackgroundColor = '&HFFFFFFFF', Column = 1, Height = 70, Width = 70, Row = 1, Shape = 1, Text = 'Lights', TextColor = '&HFFFF0000')
+TableArrangement2 = TableArrangement(Screen1, Height = 70)
+TextBox1 = TextBox(Screen1, BackgroundColor = '&H00FFFFFF', Hint = 'Hint for TextBox1', Text = 'www.geekfactorystore.com.br', TextColor = '&HFFFF0000')
+TinyDB1 = TinyDB(Screen1)
+Player1 = Player(Screen1)
+Notifier1 = Notifier(Screen1)
+BluetoothClient1 = BluetoothClient(Screen1)
+
+initialize device = None
+
+when Screen1.Initialize():
+  set global device = call TinyDB1.GetValue('StoredDevice', None)
+  if text_length(global device) > 0:
+    if not call BluetoothClient1.IsDevicePaired(global device):
+      call Notifier1.ShowAlert('Dispositivo não pareado!!!')
+      call Player1.Vibrate(300)
+  else:
+    set global device = 'Nenhum'
+  set lblDispositivo.Text = text_join('Dispositivo:', global device)
+
+when btmConectar.Click():
+  if call BluetoothClient1.IsDevicePaired(global device):
+    if call BluetoothClient1.Connect(global device):
+      call Notifier1.ShowAlert('Conectado!')
+    else:
+      call Notifier1.ShowAlert('Não Conectado!')
+      call Player1.Vibrate(300)
+  else:
+    call Notifier1.ShowAlert('Dispositivo não pareado!!!')
+    call Player1.Vibrate(300)
+
+when btmProcurar.AfterPicking():
+  set btmProcurar.Elements = BluetoothClient1.AddressesAndNames
+
+when Front.TouchDown():
+  call BluetoothClient1.SendText('A')
+
+when btmProcurar.BeforePicking():
+  set global device = btmProcurar.Selection
+  call TinyDB1.StoreValue('StoredDevice', global device)
+  set lblDispositivo.Text = text_join('Dispositivo:', global device)
+
+when Left.TouchDown():
+  call BluetoothClient1.SendText('L')
+
+when Right.TouchDown():
+  call BluetoothClient1.SendText('R')
+
+when Back.TouchDown():
+  call BluetoothClient1.SendText('B')
+
+when Lights.TouchDown():
+  call BluetoothClient1.SendText('X')
+STOP
+
