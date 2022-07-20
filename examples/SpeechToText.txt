@@ -1,0 +1,17 @@
+Create an app that converts what the user says to text
+
+START
+Screen1 = Screen(AppName = 'SpeechToText', Title = 'Screen1')
+Button1 = Button(Screen1, Text = 'Text for Button1')
+Label1 = Label(Screen1, Text = 'Text for Label1')
+SpeechRecognizer1 = SpeechRecognizer(Screen1)
+TextToSpeech1 = TextToSpeech(Screen1)
+
+when Button1.Click():
+  call SpeechRecognizer1.GetText()
+
+when SpeechRecognizer1.AfterGettingText():
+  set Label1.Text = result
+  call TextToSpeech1.Speak(Label1.Text)
+STOP
+
